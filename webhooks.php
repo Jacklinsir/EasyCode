@@ -15,7 +15,7 @@ $content = json_decode($requestBody, true);
 }*/
 
 // 项目存放物理路径，也就是站点的访问地址
-$path = "/www/wwwroot/www.easyjava.cn/EasyCode/";
+$path = "/www/wwwroot/easyjava.cn/EasyCode/";
 
 // 判断需要下拉的分支上是否有提交，我们这里的分支名称为 main
 if ($content['ref'] == 'refs/heads/main') {
