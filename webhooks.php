@@ -18,10 +18,10 @@ if (empty($content['password']) || $content['password'] != 'easyjava@cn') {
 $path = "/www/wwwroot/easyjava.cn/EasyCode/";
 
 // 判断需要下拉的分支上是否有提交，我们这里的分支名称为 main
-if ($content['ref'] == 'refs/heads/main') {
+if ($content['ref'] == 'main') {
 
     // 执行脚本 git pull，拉取分支最新代码
-    $res = shell_exec("cd {$path} && git pull origin main 2>&1"); // 当前为www用户
+    $res = shell_exec("cd {$path} && git pull origin main"); // 当前为www用户
 
     // 记录日志 ($content 返回的是一整个对象，可以按需获取里面的内容，写入日志)
     $res_log = '------------------------->' . PHP_EOL;
@@ -32,4 +32,3 @@ if ($content['ref'] == 'refs/heads/main') {
     file_put_contents("git_webhook_log.txt", $res_log, FILE_APPEND);
 }
 echo 'done';
-
