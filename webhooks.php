@@ -10,9 +10,9 @@ if (empty($requestBody)) {
 $content = json_decode($requestBody, true);
 
 // 验证 Webhooks 配置的 Secret，也可以不验证
-if (empty($content['password']) || $content['password'] != 'easyjava') {
-	exit('password error');
-}
+//if (empty($content['password']) || $content['password'] != 'easyjava') {
+//	exit('password error');
+//}
 
 // 项目存放物理路径，也就是站点的访问地址
 $path = "/www/wwwroot/easyjava.cn/EasyCode/";
