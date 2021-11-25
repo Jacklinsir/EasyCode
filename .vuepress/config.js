@@ -27,14 +27,14 @@ module.exports = {
       },
       {
         "text": "Java基础",
-        "link": "/docs/theme-reco/"
+        "link": "/docs/"
       },
       {
         "text": "设计模式",
         "items": [
           {
             "text": "创建型模式",
-            "link": "/docs/theme-reco/"
+            "link": "/docs/"
           },
           {
             "text": "结构型模式",
