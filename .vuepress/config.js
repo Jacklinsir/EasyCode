@@ -27,22 +27,22 @@ module.exports = {
       },
       {
         "text": "Java基础",
-        "link": "/docs/"
+        "link": "/blog/demo.md"
       },
       {
         "text": "设计模式",
         "items": [
           {
             "text": "创建型模式",
-            "link": "/docs/"
+            "link": "/blog/dp/create/smart-dp-factory.md"
           },
           {
             "text": "结构型模式",
-            "link": "/blogs/theme-reco/"
+            "link": "/blog/dp/structure/"
           },
           {
             "text": "行为型模式",
-            "link": "/blogs/theme-reco/"
+            "link": "/blog/dp/behavior/"
           }
         ]
       },
@@ -51,40 +51,40 @@ module.exports = {
         "items": [
           {
             "text": "Spring",
-            "link": "/docs/theme-reco/"
+            "link": "/blog/demo.md"
           },
           {
             "text": "SpringBoot",
-            "link": "/blogs/theme-reco/"
+            "link": "/blog/demo.md"
           },
           {
             "text": "SpringCloud",
-            "link": "/blogs/theme-reco/"
+            "link": "/blog/demo.md"
           }
         ]
       },
       {
         "text": "Java面试",
-        "link": "/docs/theme-reco/"
+        "link": "/blog/demo.md"
       },
       {
         "text": "系统架构",
-        "link": "/docs/theme-reco/"
+        "link": "/blog/demo.md"
       },
       {
         "text": "中间件",
-        "link": "/docs/theme-reco/"
+        "link": "/blog/demo.md"
       },
       {
         "text": "Devops",
         "items": [
           {
             "text": "K8s",
-            "link": "/docs/theme-reco/"
+            "link": "/blog/demo.md"
           },
           {
             "text": "Jenkins",
-            "link": "/blogs/theme-reco/"
+            "link": "/blog/demo.md"
           }
         ]
       },
@@ -100,17 +100,26 @@ module.exports = {
 
     //侧边栏
     "sidebar": {
-      "/docs/theme-reco/": [
-        "",
-        "theme",
-        "plugin",
-        "api"
+      '/blog/dp/': [
+        ['create/smart-dp-factory.md', '手撸设计模式之-工厂模式'],
+        ['create/smart-dp-singleton.md', '手撸设计模式之-单例模式'],
+        ['create/smart-dp-prototype.md', '手撸设计模式之-原型模式'],
+        ['create/smart-dp-builder.md', '手撸设计模式之-建造者模式']
       ]
     },
 
     "type": "blog",
     "blogConfig": {
     },
+
+    "friendLink": [
+      {
+        "title": "从码农到工匠",
+        "desc": "生命不息，奋斗不止！",
+        "email": "frank.lai1226@gmail.com",
+        "link": "https://www.easyjava.cn"
+      }
+    ],
 
     // "logo": "/logo.png",
     "search": true,
