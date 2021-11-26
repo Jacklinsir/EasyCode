@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>阿里云-ECS云服务器跨地域部署k8s集群 | 从码农到工匠</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="生命不息，奋斗不止！">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.e842a6eb.css" as="style"><link rel="preload" href="/assets/js/app.08362344.js" as="script"><link rel="preload" href="/assets/js/3.59ce7a4e.js" as="script"><link rel="preload" href="/assets/js/1.12fdb9e6.js" as="script"><link rel="preload" href="/assets/js/12.5a0c4c03.js" as="script"><link rel="prefetch" href="/assets/js/10.87864daf.js"><link rel="prefetch" href="/assets/js/11.26c0089a.js"><link rel="prefetch" href="/assets/js/13.b0079f83.js"><link rel="prefetch" href="/assets/js/14.ae625c25.js"><link rel="prefetch" href="/assets/js/15.52c3934d.js"><link rel="prefetch" href="/assets/js/16.9ede1db5.js"><link rel="prefetch" href="/assets/js/17.893ba03d.js"><link rel="prefetch" href="/assets/js/18.59f5efb4.js"><link rel="prefetch" href="/assets/js/19.0055271d.js"><link rel="prefetch" href="/assets/js/20.1ef59e6d.js"><link rel="prefetch" href="/assets/js/21.11b6f8f6.js"><link rel="prefetch" href="/assets/js/22.70115544.js"><link rel="prefetch" href="/assets/js/23.2fa16af1.js"><link rel="prefetch" href="/assets/js/24.cf4f3e35.js"><link rel="prefetch" href="/assets/js/25.9c0576cc.js"><link rel="prefetch" href="/assets/js/26.ebb97ce5.js"><link rel="prefetch" href="/assets/js/27.6397af58.js"><link rel="prefetch" href="/assets/js/28.eb62542a.js"><link rel="prefetch" href="/assets/js/29.facde5f5.js"><link rel="prefetch" href="/assets/js/4.25a6ee14.js"><link rel="prefetch" href="/assets/js/5.1562d149.js"><link rel="prefetch" href="/assets/js/6.f44b99c6.js"><link rel="prefetch" href="/assets/js/7.61521e3f.js"><link rel="prefetch" href="/assets/js/8.7100921f.js"><link rel="prefetch" href="/assets/js/9.4cb499c8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e842a6eb.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1156296a data-v-1156296a><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>从码农到工匠</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>生命不息，奋斗不止！</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>EasyJava</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">从码农到工匠</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  Home
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      设计模式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/dp/create/smart-dp-factory.html" class="nav-link"><i class="undefined"></i>
+  创建型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/structure/smart-dp-adapter.html" class="nav-link"><i class="undefined"></i>
+  结构型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/behavior/smart-dp-chain.html" class="nav-link"><i class="undefined"></i>
+  行为型模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Spring全家桶
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java面试
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  系统架构
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  中间件
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Devops
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/devops/k8s/aliyun-deploy-k8s.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/Jacklinsir" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    EasyJava
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>18</h3> <h6 data-v-828910c6>Articles</h6></div> <div data-v-828910c6><h3 data-v-828910c6>18</h3> <h6 data-v-828910c6>Tags</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  Home
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      设计模式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/dp/create/smart-dp-factory.html" class="nav-link"><i class="undefined"></i>
+  创建型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/structure/smart-dp-adapter.html" class="nav-link"><i class="undefined"></i>
+  结构型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/behavior/smart-dp-chain.html" class="nav-link"><i class="undefined"></i>
+  行为型模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Spring全家桶
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java面试
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  系统架构
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  中间件
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Devops
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/devops/k8s/aliyun-deploy-k8s.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/Jacklinsir" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/blog/devops/k8s/aliyun-deploy-k8s.html" aria-current="page" class="active sidebar-link">阿里云-ECS云服务器跨地域部署k8s集群</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>阿里云-ECS云服务器跨地域部署k8s集群</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>EasyJava</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div data-v-1156296a><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">阿里云-ECS云服务器跨地域部署k8s集群</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>EasyJava</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>11/26/2021</span></i> <!----> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>k8s</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="一-、背景介绍"><a href="#一-、背景介绍" class="header-anchor">#</a> 一 、背景介绍</h2> <blockquote><p>不慌不忙，赶上了阿里云的双十一活动，用了三个不同的阿里云账号购买了三台不通地区的阿里云服务器，反正我觉得是一次成功的薅羊毛，哈哈哈，不知道你们有没有这样认知，但是购买后我才发现，ECS服务器内网是不能互通的，正赶巧我刚好要自建一个基于ECS服务器的K8S集群，然后因为网络问题折腾了好久，估计最少3天，差点就想放弃了，然后我鼓起勇气在Google搜索资料发现，可以搞虚拟一张网卡，IP用当前节点的公网IP，然后使用此IP注册进集群。总算看到了希望，哈哈哈，下面我们开始填坑摸索吧！</p></blockquote> <h2 id="二、环境准备"><a href="#二、环境准备" class="header-anchor">#</a> 二、环境准备</h2> <h3 id="_2-1-ecs云服务资源清单"><a href="#_2-1-ecs云服务资源清单" class="header-anchor">#</a> 2.1 ECS云服务资源清单</h3> <table><thead><tr><th>云服务商</th> <th>主机名</th> <th>公网ip/私网ip</th> <th>推荐配置</th></tr></thead> <tbody><tr><td>阿里云</td> <td>zanzancloud-k8s-master</td> <td>123.57.36.xx / 172.20.213.xx</td> <td>2C2G</td></tr> <tr><td>阿里云</td> <td>zanzancloud-k8s-node1</td> <td>60.205.227.xx / 172.16.198.xx</td> <td>2C4G</td></tr> <tr><td>阿里云</td> <td>zanzancloud-k8s-node2</td> <td>123.56.148.xx / 172.22.51.xx</td> <td>2C2G</td></tr></tbody></table> <h3 id="_2-2-k8s软件列表"><a href="#_2-2-k8s软件列表" class="header-anchor">#</a> 2.2  K8s软件列表</h3> <table><thead><tr><th>软件</th> <th>版本</th></tr></thead> <tbody><tr><td>CentOS</td> <td>7.8</td></tr> <tr><td>Kubernetes</td> <td>v1.18.6</td></tr> <tr><td>Docker</td> <td>20.10.10</td></tr> <tr><td>Etcd</td> <td>3.4.3-0</td></tr> <tr><td>Flannel</td> <td>20.10.10</td></tr> <tr><td>Pause</td> <td>3.2</td></tr> <tr><td>DNS</td> <td>1.6.7</td></tr></tbody></table> <h2 id="三、阿里云ecs服务器网络问题"><a href="#三、阿里云ecs服务器网络问题" class="header-anchor">#</a> 三、阿里云ECS服务器网络问题</h2> <h3 id="_3-1-问题阐述"><a href="#_3-1-问题阐述" class="header-anchor">#</a> 3.1 问题阐述</h3> <blockquote><p>一般情况下，&quot;kubeadm&quot;部署集群时指定&quot;--apiserver-advertise-address=&lt;public_ip&gt;&quot;参数，即可在其他机器上，通过公网ip join到本机器，然而，阿里云ecs里没配置公网ip，etcd会无法启动，导致初始化失败!</p></blockquote> <h3 id="_3-2-解决方案"><a href="#_3-2-解决方案" class="header-anchor">#</a> 3.2 解决方案</h3> <blockquote><p>当我部署k8s集群的时候发现，网卡上绑定的地址不是公网IP，而应用只能绑定网卡上的地址。但是私网IP之间又不通。当时内心是崩溃的！最后在官方文档得知，可以采用公网IP部署，具体参考：<a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init-phase/" target="_blank" rel="noopener noreferrer">传送门-公网安装k8s<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="四、服务节点调整-master-node1-node2"><a href="#四、服务节点调整-master-node1-node2" class="header-anchor">#</a> 四、服务节点调整（master，node1，node2）</h2> <h3 id="_4-1-关闭firewalld防火墙-并安装设置iptables规则为空"><a href="#_4-1-关闭firewalld防火墙-并安装设置iptables规则为空" class="header-anchor">#</a> 4.1 关闭firewalld防火墙，并安装设置Iptables规则为空</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#关闭firewalld防火墙</span>
+systemctl stop firewalld <span class="token operator">&amp;&amp;</span>  systemctl  disable firewal
+<span class="token comment">#安装Iptables</span>
+yum -y <span class="token function">install</span> iptables-services  <span class="token operator">&amp;&amp;</span>  systemctl  start iptables  <span class="token operator">&amp;&amp;</span>  systemctl  <span class="token builtin class-name">enable</span> iptables<span class="token operator">&amp;&amp;</span>  iptables -F  <span class="token operator">&amp;&amp;</span>  <span class="token function">service</span> iptables save
+</code></pre></div><h3 id="_4-2-调整内核参数"><a href="#_4-2-调整内核参数" class="header-anchor">#</a> 4.2 调整内核参数</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">cat</span> <span class="token operator">&gt;</span> k8s.conf <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+#开启网桥模式
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+#开启转发
+net.ipv4.ip_forward = 1
+##关闭ipv6
+net.ipv6.conf.all.disable_ipv6=1
+EOF</span>
+<span class="token function">cp</span> k8s.conf /etc/sysctl.d/k8s.conf
+sysctl -p /etc/sysctl.d/k8s.conf
+</code></pre></div><h3 id="_4-3-关闭-swap"><a href="#_4-3-关闭-swap" class="header-anchor">#</a> 4.3 关闭 swap</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#关闭 swap</span>
+swapoff -a <span class="token operator">&amp;&amp;</span> <span class="token function">sed</span> -i <span class="token string">'/ swap / s/^\(.*\)$/#\1/g'</span> /etc/fstab
+</code></pre></div><h3 id="_4-4-关闭-selinux"><a href="#_4-4-关闭-selinux" class="header-anchor">#</a> 4.4 关闭 selinux</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#关闭 selinux</span>
+setenforce <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token function">sed</span> -i <span class="token string">'s/^SELINUX=.*/SELINUX=disabled/'</span> /etc/selinux/config
+</code></pre></div><h3 id="_4-5-设置hostname"><a href="#_4-5-设置hostname" class="header-anchor">#</a> 4.5 设置hostname</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#设置hostname</span>
+hostnamectl set-hostname zanzancloud-k8s-master  <span class="token comment"># zanzancloud-k8s-node1 / zanzancloud-k8s-node2</span>
+<span class="token function">hostname</span>
+
+<span class="token comment">#配置host映射</span>
+<span class="token function">cat</span> <span class="token operator">&gt;&gt;</span> /etc/hosts <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+123.57.36.xx  zanzancloud-k8s-master
+60.205.227.xx zanzancloud-k8s-node1
+123.56.148.xx zanzancloud-k8s-node2
+EOF</span>
+</code></pre></div><h3 id="_4-6-调整服务器时区"><a href="#_4-6-调整服务器时区" class="header-anchor">#</a> 4.6 调整服务器时区</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 设置系统时区为 中国/上海</span>
+timedatectl set-timezone Asia/Shanghai
+<span class="token comment"># 将当前的UTC时间写入硬件时钟</span>
+timedatectl set-local-rtc <span class="token number">0</span>
+<span class="token comment"># 重启依赖于系统时间的服务</span>
+systemctl restart rsyslog
+systemctl restart crond
+</code></pre></div><h3 id="_4-7-关闭邮件服务"><a href="#_4-7-关闭邮件服务" class="header-anchor">#</a> 4.7 关闭邮件服务</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#关闭邮件服务</span>
+systemctl stop postfix <span class="token operator">&amp;&amp;</span> systemctl disable postfix
+</code></pre></div><h3 id="_4-8-设置rsyslogd和systemd-journald"><a href="#_4-8-设置rsyslogd和systemd-journald" class="header-anchor">#</a> 4.8 设置rsyslogd和systemd journald</h3> <p><strong>默认有两个日志服务，使用journald关闭rsyslogd</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 持久化保存日志的目录</span>
+<span class="token function">mkdir</span> /var/log/journal
+<span class="token function">mkdir</span> /etc/systemd/journald.conf.d
+<span class="token function">cat</span> <span class="token operator">&gt;</span> /etc/systemd/journald.conf.d/99-prophet.conf <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[Journal]
+# 持久化
+Storage=persistent
+
+# 压缩历史日志
+Compress=yes
+
+SysnIntervalSec=5m
+RateLimitInterval=30s
+RateLimitBurst=1000
+
+# 最大占用空间 10G
+SystemMaxUse=10G
+
+# 单日志文件最大 200M
+SystemMaxFileSize=200M
+
+# 日志保存时间 2 周
+MaxRetentionSec=2week
+
+# 不将日志转发到 syslog
+ForwardToSyslog=no
+
+EOF</span>
+<span class="token comment">#重启journald</span>
+systemctl restart systemd-journald
+</code></pre></div><h3 id="_4-9-ipvs前置条件准备"><a href="#_4-9-ipvs前置条件准备" class="header-anchor">#</a> 4.9 ipvs前置条件准备</h3> <p><strong>ipvs转发效率比iptables更高,看上去也比iptables舒服</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code>modprobe br_netfilter
+
+<span class="token function">cat</span> <span class="token operator">&gt;</span> /etc/sysconfig/modules/ipvs.modules <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+#!/bin/bash
+modprobe -- ip_vs
+modprobe -- ip_vs_rr
+modprobe -- ip_vs_wrr
+modprobe -- ip_vs_sh
+modprobe -- nf_conntrack_ipv4
+EOF</span>
+
+<span class="token function">chmod</span> <span class="token number">755</span> /etc/sysconfig/modules/ipvs.modules <span class="token operator">&amp;&amp;</span> <span class="token function">bash</span> /etc/sysconfig/modules/ipvs.modules <span class="token operator">&amp;&amp;</span> lsmod <span class="token operator">|</span> <span class="token function">grep</span> -e ip_vs -e nf_conntrack_ipv4
+</code></pre></div><h3 id="_4-10-安装-docker"><a href="#_4-10-安装-docker" class="header-anchor">#</a> 4.10 安装 Docker</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">wget</span> https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
+<span class="token comment"># yum list docker-ce --showduplicates | sort -r</span>
+yum -y <span class="token function">install</span> docker-ce-20.10.6-3.el7
+systemctl <span class="token builtin class-name">enable</span> docker <span class="token operator">&amp;&amp;</span> systemctl start docker
+docker --version
+<span class="token comment"># 换成阿里Docker仓库</span>
+<span class="token function">cat</span> <span class="token operator">&gt;</span> /etc/docker/daemon.json <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+{
+  &quot;registry-mirrors&quot;: [&quot; https://wl5zc6br.mirror.aliyuncs.com&quot;]
+}
+EOF</span>
+systemctl restart docker
+docker info
+
+<span class="token comment"># out info</span>
+<span class="token comment"># Registry Mirrors:</span>
+<span class="token comment">#  https://wl5zc6br.mirror.aliyuncs.com/</span>
+</code></pre></div><h3 id="_4-11-安装-kubeadm、kubelet、kubectl"><a href="#_4-11-安装-kubeadm、kubelet、kubectl" class="header-anchor">#</a> 4.11 安装 Kubeadm、Kubelet、Kubectl</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 添加源</span>
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> /etc/yum.repos.d/kubernetes.repo</span>
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF</span>
+
+<span class="token comment"># 关闭selinux</span>
+setenforce <span class="token number">0</span>
+
+<span class="token comment"># 安装kubelet、kubeadm、kubectl</span>
+yum <span class="token function">install</span> -y kubelet kubeadm kubectl
+
+<span class="token comment"># 设置为开机自启</span>
+systemctl <span class="token builtin class-name">enable</span> kubelet 
+</code></pre></div><h3 id="_4-12-阿里云ecs安全组端口开放"><a href="#_4-12-阿里云ecs安全组端口开放" class="header-anchor">#</a> 4.12 阿里云ECS安全组端口开放</h3> <ul><li><p><strong>10250/10260</strong> TCP端口：给kube-schedule、kube-controll，kube-proxy、kubelet等使用</p></li> <li><p><strong>6443</strong> TCP端口：给kube-apiserver使用</p></li> <li><p><strong>2379 2380 2381</strong> TCP商品：ETCD使用</p></li> <li><p><strong>8472</strong> UDP端口：vxlan使用端口</p></li></ul> <h2 id="五、kubeadm安装k8s"><a href="#五、kubeadm安装k8s" class="header-anchor">#</a> 五、Kubeadm安装k8s</h2> <h3 id="_5-1-建立虚拟网卡-master-node1-node2"><a href="#_5-1-建立虚拟网卡-master-node1-node2" class="header-anchor">#</a> 5.1 建立虚拟网卡（master，node1，node2）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 写入虚拟网卡</span>
+<span class="token function">cat</span> <span class="token operator">&gt;</span> /etc/sysconfig/network-scripts/ifcfg-eth0:1 <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+BOOTPROTO=static
+DEVICE=eth0:1
+IPADDR=你的公网IP
+PREFIX=32
+TYPE=Ethernet
+USERCTL=no
+ONBOOT=yes
+EOF</span>
+<span class="token comment"># 重启网卡</span>
+systemctl restart network
+<span class="token comment"># 查看ip</span>
+<span class="token function">ip</span> addr
+</code></pre></div><h3 id="_5-2-修改kubelet启动参数-master-node1-node2"><a href="#_5-2-修改kubelet启动参数-master-node1-node2" class="header-anchor">#</a> 5.2 修改kubelet启动参数（master，node1，node2）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 此文件安装kubeadm后就存在了</span>
+<span class="token function">vim</span> /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+<span class="token comment"># 注意，这步很重要，如果不做，节点仍然会使用内网IP注册进集群</span>
+<span class="token comment"># 在末尾添加参数 --node-ip=公网IP</span>
+
+<span class="token comment"># Note: This dropin only works with kubeadm and kubelet v1.11+</span>
+<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
+<span class="token assign-left variable">Environment</span><span class="token operator">=</span><span class="token string">&quot;KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf&quot;</span>
+<span class="token assign-left variable">Environment</span><span class="token operator">=</span><span class="token string">&quot;KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml&quot;</span>
+<span class="token comment"># This is a file that &quot;kubeadm init&quot; and &quot;kubeadm join&quot; generates at runtime, populating the KUBELET_KUBEADM_ARGS variable dynamically</span>
+<span class="token assign-left variable">EnvironmentFile</span><span class="token operator">=</span>-/var/lib/kubelet/kubeadm-flags.env
+<span class="token comment"># This is a file that the user can use for overrides of the kubelet args as a last resort. Preferably, the user should use</span>
+<span class="token comment"># the .NodeRegistration.KubeletExtraArgs object in the configuration files instead. KUBELET_EXTRA_ARGS should be sourced from this file.</span>
+<span class="token assign-left variable">EnvironmentFile</span><span class="token operator">=</span>-/etc/sysconfig/kubelet
+<span class="token assign-left variable">ExecStart</span><span class="token operator">=</span>
+<span class="token assign-left variable">ExecStart</span><span class="token operator">=</span>/usr/bin/kubelet <span class="token variable">$KUBELET_KUBECONFIG_ARGS</span> <span class="token variable">$KUBELET_CONFIG_ARGS</span> <span class="token variable">$KUBELET_KUBEADM_ARGS</span> <span class="token variable">$KUBELET_EXTRA_ARGS</span> --node-ip<span class="token operator">=</span>公网IP
+</code></pre></div><h3 id="_5-3-使用脚本导入镜像"><a href="#_5-3-使用脚本导入镜像" class="header-anchor">#</a> 5.3 使用脚本导入镜像</h3> <h4 id="_5-3-1-master节点镜像导入脚本-pull-k8s-images-master-sh-master"><a href="#_5-3-1-master节点镜像导入脚本-pull-k8s-images-master-sh-master" class="header-anchor">#</a> 5.3.1 Master节点镜像导入脚本(pull_k8s_images_master.sh)-(master)</h4> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">set</span> -o errexit
+<span class="token builtin class-name">set</span> -o nounset
+<span class="token builtin class-name">set</span> -o pipefail
+
+<span class="token comment">##这里定义版本，按照上面得到的列表自己改一下版本号</span>
+<span class="token assign-left variable">KUBE_VERSION</span><span class="token operator">=</span>v1.18.6
+<span class="token assign-left variable">KUBE_PAUSE_VERSION</span><span class="token operator">=</span><span class="token number">3.2</span>
+<span class="token assign-left variable">ETCD_VERSION</span><span class="token operator">=</span><span class="token number">3.4</span>.3-0
+<span class="token assign-left variable">DNS_VERSION</span><span class="token operator">=</span><span class="token number">1.6</span>.7
+
+<span class="token comment">##这是原始仓库名，最后需要改名成这个</span>
+<span class="token assign-left variable">GCR_URL</span><span class="token operator">=</span>k8s.gcr.io
+
+<span class="token comment">##这里就是写你要使用的仓库</span>
+<span class="token assign-left variable">DOCKERHUB_URL</span><span class="token operator">=</span>gotok8s
+
+<span class="token comment">##这里是镜像列表，新版本要把coredns改成coredns/coredns</span>
+<span class="token assign-left variable">images</span><span class="token operator">=</span><span class="token punctuation">(</span>
+kube-proxy:<span class="token variable">${KUBE_VERSION}</span>
+kube-scheduler:<span class="token variable">${KUBE_VERSION}</span>
+kube-controller-manager:<span class="token variable">${KUBE_VERSION}</span>
+kube-apiserver:<span class="token variable">${KUBE_VERSION}</span>
+pause:<span class="token variable">${KUBE_PAUSE_VERSION}</span>
+etcd:<span class="token variable">${ETCD_VERSION}</span>
+coredns:<span class="token variable">${DNS_VERSION}</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">##这里是拉取和改名的循环语句</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">imageName</span> <span class="token keyword">in</span> <span class="token variable">${images<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> <span class="token punctuation">;</span> <span class="token keyword">do</span>
+  docker pull <span class="token variable">$DOCKERHUB_URL</span>/<span class="token variable">$imageName</span>
+  docker tag <span class="token variable">$DOCKERHUB_URL</span>/<span class="token variable">$imageName</span> <span class="token variable">$GCR_URL</span>/<span class="token variable">$imageName</span>
+  docker rmi <span class="token variable">$DOCKERHUB_URL</span>/<span class="token variable">$imageName</span>
+<span class="token keyword">done</span>
+</code></pre></div><h4 id="_5-3-2-node节点镜像导入脚本-pull-k8s-images-node-sh-node1-node2"><a href="#_5-3-2-node节点镜像导入脚本-pull-k8s-images-node-sh-node1-node2" class="header-anchor">#</a> 5.3.2 Node节点镜像导入脚本(pull_k8s_images_node.sh)-(node1，node2)</h4> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">set</span> -o errexit
+<span class="token builtin class-name">set</span> -o nounset
+<span class="token builtin class-name">set</span> -o pipefail
+
+<span class="token comment">##这里定义版本，按照上面得到的列表自己改一下版本号</span>
+
+<span class="token assign-left variable">KUBE_VERSION</span><span class="token operator">=</span>v1.18.6
+<span class="token assign-left variable">KUBE_PAUSE_VERSION</span><span class="token operator">=</span><span class="token number">3.2</span>
+<span class="token assign-left variable">ETCD_VERSION</span><span class="token operator">=</span><span class="token number">3.4</span>.3-0
+<span class="token assign-left variable">DNS_VERSION</span><span class="token operator">=</span><span class="token number">1.6</span>.7
+
+<span class="token comment">##这是原始仓库名，最后需要改名成这个</span>
+<span class="token assign-left variable">GCR_URL</span><span class="token operator">=</span>k8s.gcr.io
+
+<span class="token comment">##这里就是写你要使用的仓库</span>
+<span class="token assign-left variable">DOCKERHUB_URL</span><span class="token operator">=</span>gotok8s
+
+<span class="token comment">##这里是镜像列表，新版本要把coredns改成coredns/coredns</span>
+<span class="token assign-left variable">images</span><span class="token operator">=</span><span class="token punctuation">(</span>
+kube-proxy:<span class="token variable">${KUBE_VERSION}</span>
+pause:<span class="token variable">${KUBE_PAUSE_VERSION}</span>
+etcd:<span class="token variable">${ETCD_VERSION}</span>
+coredns:<span class="token variable">${DNS_VERSION}</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">##这里是拉取和改名的循环语句</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">imageName</span> <span class="token keyword">in</span> <span class="token variable">${images<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> <span class="token punctuation">;</span> <span class="token keyword">do</span>
+  docker pull <span class="token variable">$DOCKERHUB_URL</span>/<span class="token variable">$imageName</span>
+  docker tag <span class="token variable">$DOCKERHUB_URL</span>/<span class="token variable">$imageName</span> <span class="token variable">$GCR_URL</span>/<span class="token variable">$imageName</span>
+  docker rmi <span class="token variable">$DOCKERHUB_URL</span>/<span class="token variable">$imageName</span>
+<span class="token keyword">done</span>
+</code></pre></div><h3 id="_5-4-使用kubeadm初始化主节点-master"><a href="#_5-4-使用kubeadm初始化主节点-master" class="header-anchor">#</a> 5.4 使用kubeadm初始化主节点（master）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># step1 添加配置文件，注意替换下面的IP</span>
+<span class="token function">cat</span> <span class="token operator">&gt;</span> kubeadm-config.yaml <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: v1.18.0
+apiServer:
+  certSANs:    #填写所有kube-apiserver节点的hostname、IP、VIP
+  - zanzancloud-k8s-master    #请替换为hostname
+  - 123.57.36.xx   #请替换为公网
+  - 172.20.213.xx  #请替换为私网
+  - 10.96.0.1   #不要替换，此IP是API的集群地址，部分服务会用到
+controlPlaneEndpoint: 47.74.22.13:6443 #替换为公网IP
+networking:
+  podSubnet: 10.244.0.0/16
+  serviceSubnet: 10.96.0.0/12
+--- 将默认调度方式改为ipvs
+apiVersion: kubeproxy-config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+featureGates:
+  SupportIPVSProxyMode: true
+mode: ipvs
+EOF</span>
+
+<span class="token comment"># 如果是1核心或者1G内存的请在末尾添加参数（--ignore-preflight-errors=all），否则会初始化失败!</span>
+<span class="token comment"># 同时注意，此步骤成功后，会打印，两个重要信息!</span>
+
+kubeadm init --config<span class="token operator">=</span>kubeadm-config.yaml 
+</code></pre></div><p><strong>注意：</strong></p> <blockquote><p>信息1 上面初始化成功后，将会生成kubeconfig文件，用于请求api服务器，请执行下面操作</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">mkdir</span> -p <span class="token environment constant">$HOME</span>/.kube
+<span class="token function">sudo</span> <span class="token function">cp</span> -i /etc/kubernetes/admin.conf <span class="token environment constant">$HOME</span>/.kube/config
+<span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -u<span class="token variable">)</span></span><span class="token builtin class-name">:</span><span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -g<span class="token variable">)</span></span> <span class="token environment constant">$HOME</span>/.kube/config
+</code></pre></div><p>信息2 此信息用于后面工作节点加入主节点使用</p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubeadm <span class="token function">join</span> <span class="token number">123.57</span>.36.xx:6443 --token abcdef.0123456789abcdef <span class="token punctuation">\</span>
+   --discovery-token-ca-cert-hash sha256:28265e79f8695cf2ad2e23773e856c8b04c809b0e3b3d6f5e01fb1b543341065
+</code></pre></div></blockquote> <h3 id="_5-5-配置kube-apiserver参数-master"><a href="#_5-5-配置kube-apiserver参数-master" class="header-anchor">#</a> 5.5 配置kube-apiserver参数（master）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 修改两个信息，添加--bind-address和修改--advertise-address</span>
+<span class="token function">vim</span> /etc/kubernetes/manifests/kube-apiserver.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubeadm.kubernetes.io/kube-apiserver.advertise-address.endpoint: <span class="token number">123.57</span>.36.xx:6443
+  creationTimestamp: null
+  labels:
+    component: kube-apiserver
+    tier: control-plane
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+    - --advertise-address<span class="token operator">=</span><span class="token number">123.57</span>.36.xx  <span class="token comment">#修改为公网IP</span>
+    - --bind-address<span class="token operator">=</span><span class="token number">0.0</span>.0.0 <span class="token comment">#添加此参数</span>
+    - --allow-privileged<span class="token operator">=</span>true
+    - --authorization-mode<span class="token operator">=</span>Node,RBAC
+    - --client-ca-file<span class="token operator">=</span>/etc/kubernetes/pki/ca.crt
+    - --enable-admission-plugins<span class="token operator">=</span>NodeRestriction
+    - --enable-bootstrap-token-auth<span class="token operator">=</span>true
+    - --etcd-cafile<span class="token operator">=</span>/etc/kubernetes/pki/etcd/ca.crt
+    - --etcd-certfile<span class="token operator">=</span>/etc/kubernetes/pki/apiserver-etcd-client.crt
+    - --etcd-keyfile<span class="token operator">=</span>/etc/kubernetes/pki/apiserver-etcd-client.key
+    - --etcd-servers<span class="token operator">=</span>https://127.0.0.1:2379
+    - --insecure-port<span class="token operator">=</span><span class="token number">0</span>
+    - --kubelet-client-certificate<span class="token operator">=</span>/etc/kubernetes/pki/apiserver-kubelet-client.crt
+    - --kubelet-client-key<span class="token operator">=</span>/etc/kubernetes/pki/apiserver-kubelet-client.key
+    - --kubelet-preferred-address-types<span class="token operator">=</span>InternalIP,ExternalIP,Hostname
+    - --proxy-client-cert-file<span class="token operator">=</span>/etc/kubernetes/pki/front-proxy-client.crt
+    - --proxy-client-key-file<span class="token operator">=</span>/etc/kubernetes/pki/front-proxy-client.key
+    - --requestheader-allowed-names<span class="token operator">=</span>front-proxy-client
+    - --requestheader-client-ca-file<span class="token operator">=</span>/etc/kubernetes/pki/front-proxy-ca.crt
+    - --requestheader-extra-headers-prefix<span class="token operator">=</span>X-Remote-Extra-
+    - --requestheader-group-headers<span class="token operator">=</span>X-Remote-Group
+    - --requestheader-username-headers<span class="token operator">=</span>X-Remote-User
+    - --secure-port<span class="token operator">=</span><span class="token number">6443</span>
+    - --service-account-key-file<span class="token operator">=</span>/etc/kubernetes/pki/sa.pub
+    - --service-cluster-ip-range<span class="token operator">=</span><span class="token number">10.96</span>.0.0/12
+    - --tls-cert-file<span class="token operator">=</span>/etc/kubernetes/pki/apiserver.crt
+    - --tls-private-key-file<span class="token operator">=</span>/etc/kubernetes/pki/apiserver.key
+    image: k8s.gcr.io/kube-apiserver:v1.18.0
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: <span class="token number">8</span>
+      httpGet:
+        host: <span class="token number">175.24</span>.19.12
+        path: /healthz
+        port: <span class="token number">6443</span>
+        scheme: HTTPS
+      initialDelaySeconds: <span class="token number">15</span>
+      timeoutSeconds: <span class="token number">15</span>
+    name: kube-apiserver
+    resources:
+      requests:
+        cpu: 250m
+    volumeMounts:
+    - mountPath: /etc/ssl/certs
+      name: ca-certs
+      readOnly: <span class="token boolean">true</span>
+    - mountPath: /etc/pki
+      name: etc-pki
+      readOnly: <span class="token boolean">true</span>
+    - mountPath: /etc/kubernetes/pki
+      name: k8s-certs
+      readOnly: <span class="token boolean">true</span>
+  hostNetwork: <span class="token boolean">true</span>
+  priorityClassName: system-cluster-critical
+  volumes:
+  - hostPath:
+      path: /etc/ssl/certs
+      type: DirectoryOrCreate
+    name: ca-certs
+  - hostPath:
+      path: /etc/pki
+      type: DirectoryOrCreate
+    name: etc-pki
+  - hostPath:
+      path: /etc/kubernetes/pki
+      type: DirectoryOrCreate
+    name: k8s-certs
+status: <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><h3 id="_5-6-node点加入集群-node1-node2"><a href="#_5-6-node点加入集群-node1-node2" class="header-anchor">#</a> 5.6 Node点加入集群（node1，node2）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 需要虚拟IP和kubelet启动参数都改成功后，再执行</span>
+kubeadm <span class="token function">join</span> <span class="token number">123.57</span>.36.xx:6443 --token abcdef.0123456789abcdef <span class="token punctuation">\</span>
+   --discovery-token-ca-cert-hash sha256:28265e79f8695cf2ad2e23773e856c8b04c809b0e3b3d6f5e01fb1b543341065
+</code></pre></div><h3 id="_5-7-检查是否加入集群-master"><a href="#_5-7-检查是否加入集群-master" class="header-anchor">#</a> 5.7 检查是否加入集群（Master）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 成功后，INTERNAL-IP均显示公网IP</span>
+kubectl get nodes -o wide
+</code></pre></div><p><img src="https://img-blog.csdnimg.cn/cbb6ec40e5c24fd5b8ca39c23ef52a89.png" alt="在这里插入图片描述"></p> <h3 id="_5-8-配置flannel文件并安装-master"><a href="#_5-8-配置flannel文件并安装-master" class="header-anchor">#</a> 5.8 配置flannel文件并安装（Master）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#创建目录</span>
+<span class="token function">mkdir</span> -pv /var/lib/k8s/flannel
+<span class="token comment">#下载flannel网络插件</span>
+<span class="token function">wget</span> https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+<span class="token comment"># 共修改两个地方，一个是args下，添加</span>
+ args:
+ - --public-ip<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>PUBLIC_IP<span class="token variable">)</span></span> <span class="token comment"># 添加此参数，申明公网IP</span>
+ - --iface<span class="token operator">=</span>eth0             <span class="token comment"># 添加此参数，绑定网卡</span>
+ 
+ <span class="token comment"># 然后是env下</span>
+ env:
+ - name: PUBLIC_IP     <span class="token comment">#添加环境变量</span>
+   valueFrom:          
+     fieldRef:          
+       fieldPath: status.podIP 
+
+</code></pre></div><p><strong>kube-flannel.yml完整配置</strong></p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> policy/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PodSecurityPolicy
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> psp.flannel.unprivileged
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">seccomp.security.alpha.kubernetes.io/allowedProfileNames</span><span class="token punctuation">:</span> docker/default
+    <span class="token key atrule">seccomp.security.alpha.kubernetes.io/defaultProfileName</span><span class="token punctuation">:</span> docker/default
+    <span class="token key atrule">apparmor.security.beta.kubernetes.io/allowedProfileNames</span><span class="token punctuation">:</span> runtime/default
+    <span class="token key atrule">apparmor.security.beta.kubernetes.io/defaultProfileName</span><span class="token punctuation">:</span> runtime/default
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">privileged</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> configMap
+    <span class="token punctuation">-</span> secret
+    <span class="token punctuation">-</span> emptyDir
+    <span class="token punctuation">-</span> hostPath
+  <span class="token key atrule">allowedHostPaths</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">pathPrefix</span><span class="token punctuation">:</span> <span class="token string">&quot;/etc/cni/net.d&quot;</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">pathPrefix</span><span class="token punctuation">:</span> <span class="token string">&quot;/etc/kube-flannel&quot;</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">pathPrefix</span><span class="token punctuation">:</span> <span class="token string">&quot;/run/flannel&quot;</span>
+  <span class="token key atrule">readOnlyRootFilesystem</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token comment"># Users and groups</span>
+  <span class="token key atrule">runAsUser</span><span class="token punctuation">:</span>
+    <span class="token key atrule">rule</span><span class="token punctuation">:</span> RunAsAny
+  <span class="token key atrule">supplementalGroups</span><span class="token punctuation">:</span>
+    <span class="token key atrule">rule</span><span class="token punctuation">:</span> RunAsAny
+  <span class="token key atrule">fsGroup</span><span class="token punctuation">:</span>
+    <span class="token key atrule">rule</span><span class="token punctuation">:</span> RunAsAny
+  <span class="token comment"># Privilege Escalation</span>
+  <span class="token key atrule">allowPrivilegeEscalation</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">defaultAllowPrivilegeEscalation</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token comment"># Capabilities</span>
+  <span class="token key atrule">allowedCapabilities</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'NET_ADMIN'</span><span class="token punctuation">,</span> <span class="token string">'NET_RAW'</span><span class="token punctuation">]</span>
+  <span class="token key atrule">defaultAddCapabilities</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token key atrule">requiredDropCapabilities</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token comment"># Host namespaces</span>
+  <span class="token key atrule">hostPID</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">hostIPC</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">hostPorts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">min</span><span class="token punctuation">:</span> <span class="token number">0</span>
+      <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token number">65535</span>
+  <span class="token comment"># SELinux</span>
+  <span class="token key atrule">seLinux</span><span class="token punctuation">:</span>
+    <span class="token comment"># SELinux is unused in CaaSP</span>
+    <span class="token key atrule">rule</span><span class="token punctuation">:</span> <span class="token string">'RunAsAny'</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRole
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> flannel
+<span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">apiGroups</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'extensions'</span><span class="token punctuation">]</span>
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'podsecuritypolicies'</span><span class="token punctuation">]</span>
+    <span class="token key atrule">verbs</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'use'</span><span class="token punctuation">]</span>
+    <span class="token key atrule">resourceNames</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'psp.flannel.unprivileged'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">apiGroups</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;&quot;</span>
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> pods
+    <span class="token key atrule">verbs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> get
+  <span class="token punctuation">-</span> <span class="token key atrule">apiGroups</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;&quot;</span>
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> nodes
+    <span class="token key atrule">verbs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> list
+      <span class="token punctuation">-</span> watch
+  <span class="token punctuation">-</span> <span class="token key atrule">apiGroups</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;&quot;</span>
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> nodes/status
+    <span class="token key atrule">verbs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> patch
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRoleBinding
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> flannel
+<span class="token key atrule">roleRef</span><span class="token punctuation">:</span>
+  <span class="token key atrule">apiGroup</span><span class="token punctuation">:</span> rbac.authorization.k8s.io
+  <span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRole
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> flannel
+<span class="token key atrule">subjects</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> flannel
+    <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> flannel
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>flannel<span class="token punctuation">-</span>cfg
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">tier</span><span class="token punctuation">:</span> node
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> flannel
+<span class="token key atrule">data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cni-conf.json</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    {
+      &quot;name&quot;: &quot;cbr0&quot;,
+      &quot;cniVersion&quot;: &quot;0.3.1&quot;,
+      &quot;plugins&quot;: [
+        {
+          &quot;type&quot;: &quot;flannel&quot;,
+          &quot;delegate&quot;: {
+            &quot;hairpinMode&quot;: true,
+            &quot;isDefaultGateway&quot;: true
+          }
+        },
+        {
+          &quot;type&quot;: &quot;portmap&quot;,
+          &quot;capabilities&quot;: {
+            &quot;portMappings&quot;: true
+          }
+        }
+      ]
+    }</span>
+  <span class="token key atrule">net-conf.json</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    {
+      &quot;Network&quot;: &quot;10.244.0.0/16&quot;,
+      &quot;Backend&quot;: {
+        &quot;Type&quot;: &quot;vxlan&quot;
+      }
+    }</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> DaemonSet
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>flannel<span class="token punctuation">-</span>ds
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">tier</span><span class="token punctuation">:</span> node
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> flannel
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> flannel
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">tier</span><span class="token punctuation">:</span> node
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> flannel
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">affinity</span><span class="token punctuation">:</span>
+        <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+          <span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
+            <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+              <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+                  <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> kubernetes.io/os
+                    <span class="token key atrule">operator</span><span class="token punctuation">:</span> In
+                    <span class="token key atrule">values</span><span class="token punctuation">:</span>
+                      <span class="token punctuation">-</span> linux
+      <span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+      <span class="token key atrule">priorityClassName</span><span class="token punctuation">:</span> system<span class="token punctuation">-</span>node<span class="token punctuation">-</span>critical
+      <span class="token key atrule">tolerations</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">operator</span><span class="token punctuation">:</span> Exists
+          <span class="token key atrule">effect</span><span class="token punctuation">:</span> NoSchedule
+      <span class="token key atrule">serviceAccountName</span><span class="token punctuation">:</span> flannel
+      <span class="token key atrule">initContainers</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> install<span class="token punctuation">-</span>cni<span class="token punctuation">-</span>plugin
+          <span class="token key atrule">image</span><span class="token punctuation">:</span> rancher/mirrored<span class="token punctuation">-</span>flannelcni<span class="token punctuation">-</span>flannel<span class="token punctuation">-</span>cni<span class="token punctuation">-</span>plugin<span class="token punctuation">:</span>v1.2
+          <span class="token key atrule">command</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> cp
+          <span class="token key atrule">args</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token punctuation">-</span>f
+            <span class="token punctuation">-</span> /flannel
+            <span class="token punctuation">-</span> /opt/cni/bin/flannel
+          <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> cni<span class="token punctuation">-</span>plugin
+              <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /opt/cni/bin
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> install<span class="token punctuation">-</span>cni
+          <span class="token key atrule">image</span><span class="token punctuation">:</span> quay.io/coreos/flannel<span class="token punctuation">:</span>v0.15.0
+          <span class="token key atrule">command</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> cp
+          <span class="token key atrule">args</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token punctuation">-</span>f
+            <span class="token punctuation">-</span> /etc/kube<span class="token punctuation">-</span>flannel/cni<span class="token punctuation">-</span>conf.json
+            <span class="token punctuation">-</span> /etc/cni/net.d/10<span class="token punctuation">-</span>flannel.conflist
+          <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> cni
+              <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /etc/cni/net.d
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> flannel<span class="token punctuation">-</span>cfg
+              <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /etc/kube<span class="token punctuation">-</span>flannel/
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>flannel
+          <span class="token key atrule">image</span><span class="token punctuation">:</span> quay.io/coreos/flannel<span class="token punctuation">:</span>v0.15.0
+          <span class="token key atrule">command</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> /opt/bin/flanneld
+          <span class="token key atrule">args</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>ip<span class="token punctuation">-</span>masq
+            <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kube<span class="token punctuation">-</span>subnet<span class="token punctuation">-</span>mgr
+            <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>public<span class="token punctuation">-</span>ip=$(PUBLIC_IP)
+            <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>iface=eth0
+          <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+            <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+              <span class="token key atrule">cpu</span><span class="token punctuation">:</span> <span class="token string">&quot;100m&quot;</span>
+              <span class="token key atrule">memory</span><span class="token punctuation">:</span> <span class="token string">&quot;50Mi&quot;</span>
+            <span class="token key atrule">limits</span><span class="token punctuation">:</span>
+              <span class="token key atrule">cpu</span><span class="token punctuation">:</span> <span class="token string">&quot;100m&quot;</span>
+              <span class="token key atrule">memory</span><span class="token punctuation">:</span> <span class="token string">&quot;50Mi&quot;</span>
+          <span class="token key atrule">securityContext</span><span class="token punctuation">:</span>
+            <span class="token key atrule">privileged</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+            <span class="token key atrule">capabilities</span><span class="token punctuation">:</span>
+              <span class="token key atrule">add</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;NET_ADMIN&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;NET_RAW&quot;</span><span class="token punctuation">]</span>
+          <span class="token key atrule">env</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> PUBLIC_IP
+              <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+                <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+                  <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> status.podIP
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> POD_NAME
+              <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+                <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+                  <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> metadata.name
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> POD_NAMESPACE
+              <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+                <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+                  <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> metadata.namespace
+          <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> run
+              <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /run/flannel
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> flannel<span class="token punctuation">-</span>cfg
+              <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /etc/kube<span class="token punctuation">-</span>flannel/
+      <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> run
+          <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+            <span class="token key atrule">path</span><span class="token punctuation">:</span> /run/flannel
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> cni<span class="token punctuation">-</span>plugin
+          <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+            <span class="token key atrule">path</span><span class="token punctuation">:</span> /opt/cni/bin
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> cni
+          <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+            <span class="token key atrule">path</span><span class="token punctuation">:</span> /etc/cni/net.d
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> flannel<span class="token punctuation">-</span>cfg
+          <span class="token key atrule">configMap</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>flannel<span class="token punctuation">-</span>cfg
+
+</code></pre></div><h3 id="_5-9-创建flannel"><a href="#_5-9-创建flannel" class="header-anchor">#</a> 5.9 创建flannel</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f flannel.yaml
+</code></pre></div><h3 id="_5-10-检查网络是否连通-master"><a href="#_5-10-检查网络是否连通-master" class="header-anchor">#</a> 5.10 检查网络是否连通(master)</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 检查pod是否都是ready状态</span>
+kubectl get pods -o wide --all-namespaces
+<span class="token punctuation">..</span>.
+
+<span class="token comment"># 手动创建一个pod</span>
+kubectl create deployment nginx --image<span class="token operator">=</span>nginx
+
+<span class="token comment"># 查看pod的ip</span>
+kubectl get pods -o wide
+
+<span class="token comment"># 主节点或其它节点，ping一下此ip,看看是否能ping通</span>
+
+<span class="token comment"># 没有的话，查看2.9章节中说明的端口是否打开</span>
+</code></pre></div><h3 id="_5-11-手动开启配置-开启ipvs转发模式-master"><a href="#_5-11-手动开启配置-开启ipvs转发模式-master" class="header-anchor">#</a> 5.11 手动开启配置，开启ipvs转发模式（master）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 前面都成功了，但是有时候默认并不会启用`IPVS`模式，那就手动修改一下，只修改一处</span>
+<span class="token comment"># 修改后，如果没有及时生效，请删除kube-proxy，会自动重新创建，然后使用ipvsadm -Ln命令，查看是否生效</span>
+<span class="token comment"># ipvsadm没有安装的，使用yum install ipvsadm安装</span>
+kubectl edit configmaps -n kube-system kube-proxy
+
+---
+apiVersion: v1
+data:
+  config.conf: <span class="token operator">|</span>-
+    apiVersion: kubeproxy.config.k8s.io/v1alpha1
+    bindAddress: <span class="token number">0.0</span>.0.0
+    clientConnection:
+      acceptContentTypes: <span class="token string">&quot;&quot;</span>
+      burst: <span class="token number">0</span>
+      contentType: <span class="token string">&quot;&quot;</span>
+      kubeconfig: /var/lib/kube-proxy/kubeconfig.conf
+      qps: <span class="token number">0</span>
+    clusterCIDR: <span class="token number">10.244</span>.0.0/16
+    configSyncPeriod: 0s
+    conntrack:
+      maxPerCore: null
+      min: null
+      tcpCloseWaitTimeout: null
+      tcpEstablishedTimeout: null
+    detectLocalMode: <span class="token string">&quot;&quot;</span>
+    enableProfiling: <span class="token boolean">false</span>
+    healthzBindAddress: <span class="token string">&quot;&quot;</span>
+    hostnameOverride: <span class="token string">&quot;&quot;</span>
+    iptables:
+      masqueradeAll: <span class="token boolean">false</span>
+      masqueradeBit: null
+      minSyncPeriod: 0s
+      syncPeriod: 0s
+    ipvs:
+      excludeCIDRs: null
+      minSyncPeriod: 0s
+      scheduler: <span class="token string">&quot;&quot;</span>
+      strictARP: <span class="token boolean">false</span>
+      syncPeriod: 0s
+      tcpFinTimeout: 0s
+      tcpTimeout: 0s
+      udpTimeout: 0s
+    kind: KubeProxyConfiguration
+    metricsBindAddress: <span class="token string">&quot;&quot;</span>
+    mode: <span class="token string">&quot;ipvs&quot;</span>  <span class="token comment"># 如果为空，请填入`ipvs`</span>
+    nodePortAddresses: null
+    oomScoreAdj: null
+    portRange: <span class="token string">&quot;&quot;</span>
+    showHiddenMetricsForVersion: <span class="token string">&quot;&quot;</span>
+    udpIdleTimeout: 0s
+    winkernel:
+      enableDSR: <span class="token boolean">false</span>
+      networkName: <span class="token string">&quot;&quot;</span>
+</code></pre></div><p><strong>预期结果如下图：</strong> <img src="https://img-blog.csdnimg.cn/2798a6ac29e7433fad8bb105120b7f5f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5oqA5pyv5o-P6L-w5Lq655Sf,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p> <h3 id="_5-12-移除虚拟网卡-非必须"><a href="#_5-12-移除虚拟网卡-非必须" class="header-anchor">#</a> 5.12 移除虚拟网卡(非必须)</h3> <blockquote><p>注意： 此步骤，可以不执行，因为实测不移除，节点间的网络也通了，如果是centos8网络不通，再执行下面的操作，移除虚拟虚拟网卡</p></blockquote> <div class="language-shell extra-class"><pre class="language-shell"><code> <span class="token comment"># 移除虚拟网卡</span>
+ <span class="token function">mv</span> /etc/sysconfig/network-scripts/ifcfg-eth0<span class="token punctuation">\</span>:1 /root/
+ <span class="token comment"># 重启</span>
+ <span class="token function">reboot</span>
+</code></pre></div><h2 id="六、安装默认的storageclass"><a href="#六、安装默认的storageclass" class="header-anchor">#</a> 六、安装默认的StorageClass</h2> <h3 id="_6-1-master和node节点安装nfs服务-master-node1-node2"><a href="#_6-1-master和node节点安装nfs服务-master-node1-node2" class="header-anchor">#</a> 6.1 master和node节点安装nfs服务(master，node1，node2 )</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>yum -y <span class="token function">install</span> nfs-utils rpcbind
+<span class="token comment">#启动nfs并设为开机自启</span>
+systemctl start nfs <span class="token operator">&amp;&amp;</span> systemctl <span class="token builtin class-name">enable</span> nfs
+systemctl start rpcbind <span class="token operator">&amp;&amp;</span> systemctl <span class="token builtin class-name">enable</span> rpcbind
+</code></pre></div><h3 id="_6-2-master节点创建共享挂载目录-客户端不需要创建共享目录和编辑配置文件-只安装服务就行"><a href="#_6-2-master节点创建共享挂载目录-客户端不需要创建共享目录和编辑配置文件-只安装服务就行" class="header-anchor">#</a> 6.2 master节点创建共享挂载目录（客户端不需要创建共享目录和编辑配置文件，只安装服务就行）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">mkdir</span> -pv /data/volumes/<span class="token punctuation">{</span>v1,v2,v3<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_6-3-编辑master节点-etc-exports文件-将目录共享到-所有网段中-网段根据自己的情况写"><a href="#_6-3-编辑master节点-etc-exports文件-将目录共享到-所有网段中-网段根据自己的情况写" class="header-anchor">#</a> 6.3 编辑master节点/etc/exports文件,将目录共享到*所有网段中：（网段根据自己的情况写）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">cat</span> /etc/exports <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+/data/volumes/v1  *(rw,no_root_squash,no_all_squash)
+/data/volumes/v2  *(rw,no_root_squash,no_all_squash)
+/data/volumes/v3  *(rw,no_root_squash,no_all_squash)
+EOF</span>
+
+<span class="token comment"># 发布</span>
+exportfs -arv
+<span class="token comment"># 查看</span>
+showmount -e
+</code></pre></div><p><strong>注意：</strong></p> <blockquote><p>* 表示所有网段支持，192.168.200.0/24表示指定网段才支持访问。</p></blockquote> <h3 id="_6-4-master主节点下载-nfs-插件-master"><a href="#_6-4-master主节点下载-nfs-插件-master" class="header-anchor">#</a> 6.4 master主节点下载 NFS 插件(master)</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#创建目录</span>
+<span class="token function">mkdir</span> -pv /var/lib/k8s/storage
+<span class="token comment">#----------------------------</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">file</span> <span class="token keyword">in</span> class.yaml deployment.yaml rbac.yaml test-claim.yaml <span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token function">wget</span> https://raw.githubusercontent.com/kubernetes-incubator/external-storage/master/nfs-client/deploy/<span class="token variable">$file</span> <span class="token punctuation">;</span> <span class="token keyword">done</span>
+</code></pre></div><h3 id="_6-5-修改deployment-yaml文件"><a href="#_6-5-修改deployment-yaml文件" class="header-anchor">#</a> 6.5 修改deployment.yaml文件</h3> <div class="language-yml extra-class"><pre class="language-yml"><code>vim deployment.yaml
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>provisioner
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>provisioner
+  <span class="token comment"># replace with namespace where provisioner is deployed</span>
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> default
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">strategy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> Recreate
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>provisioner
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>provisioner
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">serviceAccountName</span><span class="token punctuation">:</span> nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>provisioner
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>provisioner
+          <span class="token key atrule">image</span><span class="token punctuation">:</span> quay.io/external_storage/nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>provisioner<span class="token punctuation">:</span>latest     <span class="token comment">##默认是latest版本</span>
+          <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>root
+              <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /persistentvolumes
+          <span class="token key atrule">env</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> PROVISIONER_NAME
+              <span class="token key atrule">value</span><span class="token punctuation">:</span> fuseim.pri/ifs          <span class="token comment">##这里的供应者名称必须和class.yaml中的provisioner的名称一致，否则部署不成功</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> NFS_SERVER
+              <span class="token key atrule">value</span><span class="token punctuation">:</span> 123.57.36.19           <span class="token comment">##这里写NFS服务器的IP地址或者能解析到的主机名</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> NFS_PATH
+              <span class="token key atrule">value</span><span class="token punctuation">:</span> /data/volumes/v1        <span class="token comment">##这里写NFS服务器中的共享挂载目录（强调：这里的路径必须是目录中最后一层的文件夹，否则部署的应用将无权限创建目录导致Pending）</span>
+      <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nfs<span class="token punctuation">-</span>client<span class="token punctuation">-</span>root
+          <span class="token key atrule">nfs</span><span class="token punctuation">:</span>
+            <span class="token key atrule">server</span><span class="token punctuation">:</span> 123.57.36.19            <span class="token comment">##NFS服务器的IP或可解析到的主机名 </span>
+            <span class="token key atrule">path</span><span class="token punctuation">:</span> /data/volumes/v1           <span class="token comment">##NFS服务器中的共享挂载目录（强调：这里的路径必须是目录中最后一层的文件夹，否则部署的应用将无权限创建目录导致Pending）</span>
+</code></pre></div><h3 id="_6-6-部署yml文件"><a href="#_6-6-部署yml文件" class="header-anchor">#</a> 6.6 部署yml文件</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f <span class="token builtin class-name">.</span>
+</code></pre></div><h3 id="_6-7-验证安装"><a href="#_6-7-验证安装" class="header-anchor">#</a> 6.7 验证安装</h3> <p><strong>查看服务：</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl get pods
+</code></pre></div><p><img src="https://img-blog.csdnimg.cn/f8bf5c3507874ffc8926a2a0d4568b9e.png" alt="在这里插入图片描述"> <strong>列出你的集群中的StorageClass：</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl get storageclass
+</code></pre></div><p><img src="https://img-blog.csdnimg.cn/279107eecdd34a5a87336d4aef5f526e.png" alt="在这里插入图片描述"> <strong>标记一个StorageClass为默认的:</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl patch storageclass managed-nfs-storage -p <span class="token string">'{&quot;metadata&quot;: {&quot;annotations&quot;:{&quot;storageclass.kubernetes.io/is-default-class&quot;:&quot;true&quot;}}}'</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>kubectl get storageclass
+</code></pre></div><p><img src="https://img-blog.csdnimg.cn/f5db8dcdcadf499f81bd4839808a8351.png" alt="在这里插入图片描述"></p> <h3 id="_6-8-测试文件"><a href="#_6-8-测试文件" class="header-anchor">#</a> 6.8 测试文件</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#创建测试文件并写入yml配置</span>
+<span class="token function">cat</span> statefulset-nfs.yaml <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: nginx
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nfs-web
+spec:
+  serviceName: &quot;nginx&quot;
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nfs-web # has to match .spec.template.metadata.labels
+  template:
+    metadata:
+      labels:
+        app: nfs-web
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+      annotations:
+        volume.beta.kubernetes.io/storage-class: managed-nfs-storage
+    spec:
+      accessModes: [ &quot;ReadWriteOnce&quot; ]
+      resources:
+        requests:
+          storage: 1Gi
+EOF</span>
+
+<span class="token comment"># 安装测试用例</span>
+kubectl apply -f statefulset-nfs.yaml
+</code></pre></div><p><strong>查看pod：</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@zanzancloud-k8s-master ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pods</span>
+NAME                                      READY   STATUS    RESTARTS   AGE
+nfs-client-provisioner-6d4469b5b5-m6jgp   <span class="token number">1</span>/1     Running   <span class="token number">1</span>          47h
+nfs-web-0                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          44m
+nfs-web-1                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          44m
+nfs-web-2                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          43m
+</code></pre></div><p><strong>查看pvc:</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@zanzancloud-k8s-master ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pvc</span>
+NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          AGE
+test-claim      Bound    pvc-5dc58dfa-bd9d-4ad3-98c4-28649c13113c   1Mi        RWX            managed-nfs-storage   47h
+www-nfs-web-0   Bound    pvc-7cdcdc4c-e9d2-4848-b434-9caf7e72db5a   1Gi        RWO            managed-nfs-storage   45m
+www-nfs-web-1   Bound    pvc-23e3cdb2-a365-43ff-8936-d0e3df30ffac   1Gi        RWO            managed-nfs-storage   44m
+www-nfs-web-2   Bound    pvc-2c34b87d-4f09-4063-aea9-9ae1e7567194   1Gi        RWO            managed-nfs-storage   44m
+</code></pre></div><p><strong>查看pv:</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@zanzancloud-k8s-master ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pv</span>
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                                             STORAGECLASS          REASON   AGE
+pvc-23e3cdb2-a365-43ff-8936-d0e3df30ffac   1Gi        RWO            Delete           Bound    default/www-nfs-web-1                                             managed-nfs-storage            45m
+pvc-2c34b87d-4f09-4063-aea9-9ae1e7567194   1Gi        RWO            Delete           Bound    default/www-nfs-web-2                                             managed-nfs-storage            45m
+pvc-5dc58dfa-bd9d-4ad3-98c4-28649c13113c   1Mi        RWX            Delete           Bound    default/test-claim                                                managed-nfs-storage            47h
+pvc-7bf72c3c-be16-43ab-b43a-a84659b9c688   20Gi       RWO            Delete           Bound    kubesphere-monitoring-system/prometheus-k8s-db-prometheus-k8s-1   managed-nfs-storage            45h
+pvc-7cdcdc4c-e9d2-4848-b434-9caf7e72db5a   1Gi        RWO            Delete           Bound    default/www-nfs-web-0                                             managed-nfs-storage            46m
+pvc-dfac2b35-6c22-487e-baee-f381c44a5254   20Gi       RWO            Delete           Bound    kubesphere-monitoring-system/prometheus-k8s-db-prometheus-k8s-0   managed-nfs-storage            45h
+</code></pre></div><p><strong>查看 nfs server 目录中信息:</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@zanzancloud-k8s-master ~<span class="token punctuation">]</span><span class="token comment"># ll /data/volumes/v1</span>
+total <span class="token number">0</span>
+drwxrwxrwx <span class="token number">2</span> root root  <span class="token number">6</span> Feb <span class="token number">11</span> <span class="token number">15</span>:58 default-test-claim-pvc-5dc58dfa-bd9d-4ad3-98c4-28649c13113c
+drwxrwxrwx <span class="token number">2</span> root root  <span class="token number">6</span> Feb <span class="token number">11</span> <span class="token number">10</span>:35 default-test-claim-pvc-b68c2fde-14eb-464a-8907-f778a654e8b8
+drwxrwxrwx <span class="token number">2</span> root root  <span class="token number">6</span> Feb <span class="token number">13</span> <span class="token number">14</span>:30 default-www-nfs-web-0-pvc-7cdcdc4c-e9d2-4848-b434-9caf7e72db5a
+drwxrwxrwx <span class="token number">2</span> root root  <span class="token number">6</span> Feb <span class="token number">13</span> <span class="token number">14</span>:31 default-www-nfs-web-1-pvc-23e3cdb2-a365-43ff-8936-d0e3df30ffac
+drwxrwxrwx <span class="token number">2</span> root root  <span class="token number">6</span> Feb <span class="token number">13</span> <span class="token number">14</span>:31 default-www-nfs-web-2-pvc-2c34b87d-4f09-4063-aea9-9ae1e7567194
+drwxrwxrwx <span class="token number">3</span> root root <span class="token number">27</span> Feb <span class="token number">13</span> <span class="token number">14</span>:44 kubesphere-monitoring-system-prometheus-k8s-db-prometheus-k8s-0-pvc-dfac2b35-6c22-487e-baee-f381c44a5254
+drwxrwxrwx <span class="token number">3</span> root root <span class="token number">27</span> Feb <span class="token number">13</span> <span class="token number">14</span>:44 kubesphere-monitoring-system-prometheus-k8s-db-prometheus-k8s-1-pvc-7bf72c3c-be16-43ab-b43a-a84659b9c688
+</code></pre></div><h2 id="七、安装kubesphere监控"><a href="#七、安装kubesphere监控" class="header-anchor">#</a> 七、安装kubeSphere监控</h2> <h3 id="_7-1-kubesphere架构"><a href="#_7-1-kubesphere架构" class="header-anchor">#</a> 7.1 kubeSphere架构</h3> <p><img src="https://img-blog.csdnimg.cn/0e6d007f66b34008a6e32ed684152b9d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5oqA5pyv5o-P6L-w5Lq655Sf,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p> <h3 id="_7-2-环境要求"><a href="#_7-2-环境要求" class="header-anchor">#</a> 7.2 环境要求</h3> <blockquote><p>前提条件：
+1.k8s集群版本必须是1.18.x（v1.18.6）
+2.必须有默认的storageclass(上面已经安装)
+3.内存和cpu最低要求：CPU &gt; 1 Core, Memory &gt; 2 G</p></blockquote> <h3 id="_7-3-安装yaml文件-先安装第一个-再安装第二个"><a href="#_7-3-安装yaml文件-先安装第一个-再安装第二个" class="header-anchor">#</a> 7.3.安装yaml文件 （先安装第一个，再安装第二个）</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.0.0/kubesphere-installer.yaml
+   
+kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.0.0/cluster-configuration.yaml
+</code></pre></div><h3 id="_7-4-安装日志查看-中间需要等待时间"><a href="#_7-4-安装日志查看-中间需要等待时间" class="header-anchor">#</a> 7.4 安装日志查看(中间需要等待时间)</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl logs -n kubesphere-system <span class="token variable"><span class="token variable">$(</span>kubectl get pod -n kubesphere-system -l <span class="token assign-left variable">app</span><span class="token operator">=</span>ks-install -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.items[0].metadata.name}'</span><span class="token variable">)</span></span> -f
+</code></pre></div><h3 id="_7-5-查看所有pod"><a href="#_7-5-查看所有pod" class="header-anchor">#</a> 7.5 查看所有pod</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@zanzancloud-k8s-master ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pod -A</span>
+NAMESPACE                      NAME                                               READY   STATUS    RESTARTS   AGE
+default                        nfs-client-provisioner-57944b54d5-mv895            <span class="token number">1</span>/1     Running   <span class="token number">5</span>          2d3h
+kube-system                    coredns-66bff467f8-k67hr                           <span class="token number">1</span>/1     Running   <span class="token number">7</span>          3d23h
+kube-system                    coredns-66bff467f8-pvlbn                           <span class="token number">1</span>/1     Running   <span class="token number">7</span>          3d23h
+kube-system                    etcd-zanzancloud-k8s-master                        <span class="token number">1</span>/1     Running   <span class="token number">8</span>          3d23h
+kube-system                    kube-apiserver-zanzancloud-k8s-master              <span class="token number">1</span>/1     Running   <span class="token number">7</span>          3d21h
+kube-system                    kube-controller-manager-zanzancloud-k8s-master     <span class="token number">1</span>/1     Running   <span class="token number">19</span>         3d23h
+kube-system                    kube-flannel-ds-6tjtn                              <span class="token number">1</span>/1     Running   <span class="token number">3</span>          3d
+kube-system                    kube-flannel-ds-b2c6w                              <span class="token number">1</span>/1     Running   <span class="token number">3</span>          3d
+kube-system                    kube-flannel-ds-vdssz                              <span class="token number">1</span>/1     Running   <span class="token number">4</span>          3d
+kube-system                    kube-proxy-dv252                                   <span class="token number">1</span>/1     Running   <span class="token number">6</span>          3d23h
+kube-system                    kube-proxy-gfxcv                                   <span class="token number">1</span>/1     Running   <span class="token number">8</span>          3d23h
+kube-system                    kube-proxy-mmqff                                   <span class="token number">1</span>/1     Running   <span class="token number">6</span>          3d23h
+kube-system                    kube-scheduler-zanzancloud-k8s-master              <span class="token number">1</span>/1     Running   <span class="token number">18</span>         3d23h
+kube-system                    snapshot-controller-0                              <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+kubesphere-controls-system     default-http-backend-857d7b6856-vhv55              <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+kubesphere-controls-system     kubectl-admin-58f985d8f6-lfhc7                     <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   alertmanager-main-0                                <span class="token number">2</span>/2     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   alertmanager-main-1                                <span class="token number">2</span>/2     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   alertmanager-main-2                                <span class="token number">2</span>/2     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   kube-state-metrics-95c974544-2jxp2                 <span class="token number">3</span>/3     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   node-exporter-7crqm                                <span class="token number">2</span>/2     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   node-exporter-jf5zs                                <span class="token number">2</span>/2     Running   <span class="token number">2</span>          2d2h
+kubesphere-monitoring-system   node-exporter-kfpg9                                <span class="token number">2</span>/2     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   notification-manager-deployment-7c8df68d94-mc2fr   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   notification-manager-deployment-7c8df68d94-tqlqm   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+kubesphere-monitoring-system   notification-manager-operator-6958786cd6-rbkcn     <span class="token number">2</span>/2     Running   <span class="token number">2</span>          40h
+kubesphere-monitoring-system   prometheus-k8s-0                                   <span class="token number">3</span>/3     Running   <span class="token number">11</span>         2d2h
+kubesphere-monitoring-system   prometheus-k8s-1                                   <span class="token number">3</span>/3     Running   <span class="token number">11</span>         2d2h
+kubesphere-monitoring-system   prometheus-operator-84d58bf775-x5mm2               <span class="token number">2</span>/2     Running   <span class="token number">3</span>          2d2h
+kubesphere-system              ks-apiserver-686f9d89f5-md894                      <span class="token number">1</span>/1     Running   <span class="token number">2</span>          40h
+kubesphere-system              ks-console-b4df86d6f-kqh98                         <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+kubesphere-system              ks-controller-manager-5b85577bdb-2kf9k             <span class="token number">1</span>/1     Running   <span class="token number">5</span>          2d2h
+kubesphere-system              ks-installer-7cb866bd-krx6k                        <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+kubesphere-system              openldap-0                                         <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+kubesphere-system              redis-644bc597b9-t7brt                             <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d2h
+</code></pre></div><h3 id="_7-6-访问kubesphere"><a href="#_7-6-访问kubesphere" class="header-anchor">#</a> 7.6 访问kubesphere</h3> <blockquote><p>访问地址：ip:30880
+账号：admin 密码： P@88w0rd</p></blockquote> <p><img src="https://img-blog.csdnimg.cn/41d3b2d6a0ee4b52897a45669eef5601.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5oqA5pyv5o-P6L-w5Lq655Sf,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p> <h2 id="八、总结"><a href="#八、总结" class="header-anchor">#</a> 八、总结</h2> <blockquote><p>呀呀呀，总算折腾完了，经过几天不懈努力，从网络到k8s集群，再到监控端，废了九牛二虎之力，上诉流程是经过折腾总结的经验，希望对于你有所帮助！！</p></blockquote></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-70334359></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.08362344.js" defer></script><script src="/assets/js/3.59ce7a4e.js" defer></script><script src="/assets/js/1.12fdb9e6.js" defer></script><script src="/assets/js/12.5a0c4c03.js" defer></script>
+  </body>
+</html>

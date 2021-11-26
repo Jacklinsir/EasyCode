@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>手撸设计模式-状态模式 | 从码农到工匠</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="生命不息，奋斗不止！">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.e842a6eb.css" as="style"><link rel="preload" href="/assets/js/app.08362344.js" as="script"><link rel="preload" href="/assets/js/3.59ce7a4e.js" as="script"><link rel="preload" href="/assets/js/1.12fdb9e6.js" as="script"><link rel="preload" href="/assets/js/16.9ede1db5.js" as="script"><link rel="prefetch" href="/assets/js/10.87864daf.js"><link rel="prefetch" href="/assets/js/11.26c0089a.js"><link rel="prefetch" href="/assets/js/12.5a0c4c03.js"><link rel="prefetch" href="/assets/js/13.b0079f83.js"><link rel="prefetch" href="/assets/js/14.ae625c25.js"><link rel="prefetch" href="/assets/js/15.52c3934d.js"><link rel="prefetch" href="/assets/js/17.893ba03d.js"><link rel="prefetch" href="/assets/js/18.59f5efb4.js"><link rel="prefetch" href="/assets/js/19.0055271d.js"><link rel="prefetch" href="/assets/js/20.1ef59e6d.js"><link rel="prefetch" href="/assets/js/21.11b6f8f6.js"><link rel="prefetch" href="/assets/js/22.70115544.js"><link rel="prefetch" href="/assets/js/23.2fa16af1.js"><link rel="prefetch" href="/assets/js/24.cf4f3e35.js"><link rel="prefetch" href="/assets/js/25.9c0576cc.js"><link rel="prefetch" href="/assets/js/26.ebb97ce5.js"><link rel="prefetch" href="/assets/js/27.6397af58.js"><link rel="prefetch" href="/assets/js/28.eb62542a.js"><link rel="prefetch" href="/assets/js/29.facde5f5.js"><link rel="prefetch" href="/assets/js/4.25a6ee14.js"><link rel="prefetch" href="/assets/js/5.1562d149.js"><link rel="prefetch" href="/assets/js/6.f44b99c6.js"><link rel="prefetch" href="/assets/js/7.61521e3f.js"><link rel="prefetch" href="/assets/js/8.7100921f.js"><link rel="prefetch" href="/assets/js/9.4cb499c8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e842a6eb.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1156296a data-v-1156296a><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>从码农到工匠</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>生命不息，奋斗不止！</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>EasyJava</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">从码农到工匠</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  Home
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      设计模式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/dp/create/smart-dp-factory.html" class="nav-link"><i class="undefined"></i>
+  创建型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/structure/smart-dp-adapter.html" class="nav-link"><i class="undefined"></i>
+  结构型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/behavior/smart-dp-chain.html" class="nav-link"><i class="undefined"></i>
+  行为型模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Spring全家桶
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java面试
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  系统架构
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  中间件
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Devops
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/devops/k8s/aliyun-deploy-k8s.html" class="nav-link"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/Jacklinsir" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    EasyJava
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>18</h3> <h6 data-v-828910c6>Articles</h6></div> <div data-v-828910c6><h3 data-v-828910c6>18</h3> <h6 data-v-828910c6>Tags</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  Home
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      设计模式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/dp/create/smart-dp-factory.html" class="nav-link"><i class="undefined"></i>
+  创建型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/structure/smart-dp-adapter.html" class="nav-link"><i class="undefined"></i>
+  结构型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/behavior/smart-dp-chain.html" class="nav-link"><i class="undefined"></i>
+  行为型模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Spring全家桶
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java面试
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  系统架构
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  中间件
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Devops
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/devops/k8s/aliyun-deploy-k8s.html" class="nav-link"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/Jacklinsir" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/blog/dp/behavior/smart-dp-chain.html" class="sidebar-link">手撸设计模式之-责任链模式</a></li><li><a href="/blog/dp/behavior/smart-dp-delegate.html" class="sidebar-link">手撸设计模式之-委派模式</a></li><li><a href="/blog/dp/behavior/smart-dp-observation.html" class="sidebar-link">手撸设计模式之-观察者模式</a></li><li><a href="/blog/dp/behavior/smart-dp-state.html" aria-current="page" class="active sidebar-link">手撸设计模式之-状态模式</a></li><li><a href="/blog/dp/behavior/smart-dp-strategy.html" class="sidebar-link">手撸设计模式之-策略模式</a></li><li><a href="/blog/dp/behavior/smart-dp-template.html" class="sidebar-link">手撸设计模式之-模板模式</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>手撸设计模式-状态模式</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>EasyJava</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div data-v-1156296a><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">手撸设计模式-状态模式</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>EasyJava</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>11/26/2021</span></i> <!----> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>状态模式</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="一-、状态模式介绍"><a href="#一-、状态模式介绍" class="header-anchor">#</a> 一 、状态模式介绍</h2> <h3 id="_1-1-状态模式定义"><a href="#_1-1-状态模式定义" class="header-anchor">#</a> 1.1 状态模式定义</h3> <blockquote><ul><li>状态（State）模式的定义：对有状态的对象，把复杂的“判断逻辑”提取到不同的状态对象中，允许状态对象在其内部状态发生改变时改变其行为。</li> <li>当一个对象内部状态发生改变时，允许改变对象的行为，这个对象看起来可以说是修改了其他的类。</li></ul></blockquote> <h3 id="_1-2-状态模式结构"><a href="#_1-2-状态模式结构" class="header-anchor">#</a> 1.2 状态模式结构：</h3> <blockquote><p>状态模式把受环境改变的对象行为包装在不同的状态对象里，其意图是让一个对象在其内部状态改变的时候，其行为也随之改变。现在我们来分析其基本结构和实现方法。</p></blockquote> <p><strong>主要有以下模式角色：</strong></p> <blockquote><ul><li>环境类（Context）角色：也称为上下文，它定义了客户端需要的接口，内部维护一个当前状态，并负责具体状态的切换。</li> <li>抽象状态（State）角色：定义一个接口，用以封装环境对象中的特定状态所对应的行为，可以有一个或多个行为。</li> <li>具体状态（Concrete State）角色：实现抽象状态所对应的行为，并且在需要的情况下进行状态切换。</li></ul></blockquote> <h3 id="_1-3-uml结构图"><a href="#_1-3-uml结构图" class="header-anchor">#</a> 1.3 UML结构图</h3> <p><img src="https://img-blog.csdnimg.cn/b34896dcd2c140f88ac05b8dc82ce80d.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5oqA5pyv5o-P6L-w5Lq655Sf,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p> <h3 id="_1-4-状态模式代码实现"><a href="#_1-4-状态模式代码实现" class="header-anchor">#</a> 1.4 状态模式代码实现</h3> <p><strong>抽象状态类定义:</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">State</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * 抽象处理状态
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">handlerState</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>环境上下文类定义:</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Context</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">State</span> state<span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 初始化具体状态对象
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">Context</span><span class="token punctuation">(</span><span class="token class-name">State</span> state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 获取状态
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">State</span> <span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 设置状态
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setState</span><span class="token punctuation">(</span><span class="token class-name">State</span> state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 执行处理状态
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">executeState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span><span class="token function">handlerState</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>业务状态A定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConcreteStateA</span> <span class="token keyword">extends</span> <span class="token class-name">State</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handlerState</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;ConcreteStateA.handlerState - 当前状态是A&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ConcreteStateA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>业务状态B定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConcreteStateB</span> <span class="token keyword">extends</span> <span class="token class-name">State</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handlerState</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;ConcreteStateB.handlerState - 当前状态是B&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ConcreteStateB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StateClient</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//设置开始状态</span>
+        <span class="token class-name">Context</span> context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Context</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ConcreteStateA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//执行A状态</span>
+        context<span class="token punctuation">.</span><span class="token function">executeState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//流转新的状态</span>
+        context<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ConcreteStateB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//执行B状态</span>
+        context<span class="token punctuation">.</span><span class="token function">executeState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>预期输出结果：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">ConcreteStateA</span><span class="token punctuation">.</span>handlerState <span class="token operator">-</span> 当前状态是<span class="token class-name">A</span>
+<span class="token class-name">ConcreteStateB</span><span class="token punctuation">.</span>handlerState <span class="token operator">-</span> 当前状态是<span class="token class-name">B</span>
+</code></pre></div><h2 id="二、状态模式场景"><a href="#二、状态模式场景" class="header-anchor">#</a> 二、状态模式场景</h2> <h3 id="_2-1-场景定义"><a href="#_2-1-场景定义" class="header-anchor">#</a> 2.1 场景定义</h3> <blockquote><ul><li>在上图中也可以看到我们的流程节点中包括了各个状态到下一个状态扭转的关联条件，比如；审核通过才能到活动中，而不能从编辑中直接到活动中，而这些状态的转变就是我们要完成的场景处理。</li> <li>大部分程序员基本都开发过类似的业务场景，需要对活动或者一些配置需要审核后才能对外发布，而这个审核的过程往往会随着系统的重要程度而设立多级控制，来保证一个活动可以安全上线，避免造成资损。</li> <li>当然有时候会用到一些审批流的过程配置，也是非常方便开发类似的流程的，也可以在配置中设定某个节点的审批人员。但这不是我们主要体现的点，在本案例中我们主要是模拟学习对一个活动的多个状态节点的审核控制。</li></ul></blockquote> <h3 id="_2-2-场景描述图"><a href="#_2-2-场景描述图" class="header-anchor">#</a> 2.2 场景描述图</h3> <p><img src="https://img-blog.csdnimg.cn/59dd6330ed02455da0e906d9ca7f7497.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5oqA5pyv5o-P6L-w5Lq655Sf,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p> <h3 id="_2-3-场景代码实现"><a href="#_2-3-场景代码实现" class="header-anchor">#</a> 2.3 场景代码实现</h3> <p><strong>抽象状态接口定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">State</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * 活动提审
+     */</span>
+    <span class="token class-name">Result</span> <span class="token function">activityReview</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 审核通过
+     */</span>
+    <span class="token class-name">Result</span> <span class="token function">examinationPassed</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 审核拒绝
+     */</span>
+    <span class="token class-name">Result</span> <span class="token function">reviewRejected</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 撤审撤销
+     */</span>
+    <span class="token class-name">Result</span> <span class="token function">withdrawalOfTrial</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 活动关闭
+     */</span>
+    <span class="token class-name">Result</span> <span class="token function">activityClosed</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 活动开启
+     */</span>
+    <span class="token class-name">Result</span> <span class="token function">activityOn</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 活动执行
+     */</span>
+    <span class="token class-name">Result</span> <span class="token function">activityExecution</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>状态枚举定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">Status</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 1创建编辑、2待审核、3审核通过(任务扫描成活动中)、4审核拒绝(可以撤审到编辑状态)、5活动中、6活动关闭、7活动开启(任务扫描成活动中)</span>
+    <span class="token class-name">Editing</span><span class="token punctuation">,</span> <span class="token class-name">Check</span><span class="token punctuation">,</span> <span class="token class-name">Pass</span><span class="token punctuation">,</span> <span class="token class-name">Refuse</span><span class="token punctuation">,</span> <span class="token class-name">Doing</span><span class="token punctuation">,</span> <span class="token class-name">Close</span><span class="token punctuation">,</span> <span class="token class-name">Open</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>抽象状态类:</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractState</span> <span class="token keyword">implements</span> <span class="token class-name">State</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">RuntimeException</span> EXCEPTION <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">&quot;操作流程不允许&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment">//抽象类默认实现了 State 接口所有方法</span>
+    <span class="token comment">//该类的所有方法，其子类即具体的状态类可以有选择的进行重写，减少了冗余代码</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityReview</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> EXCEPTION<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">examinationPassed</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> EXCEPTION<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">reviewRejected</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> EXCEPTION<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">withdrawalOfTrial</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> EXCEPTION<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityClosed</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> EXCEPTION<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityOn</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> EXCEPTION<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityExecution</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> EXCEPTION<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p><strong>活动信息模型：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ActivityInfo</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> activityId<span class="token punctuation">;</span>    <span class="token comment">// 活动ID</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> activityName<span class="token punctuation">;</span>  <span class="token comment">// 活动名称</span>
+    <span class="token keyword">private</span> <span class="token class-name">Enum</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Status</span><span class="token punctuation">&gt;</span></span> status<span class="token punctuation">;</span>  <span class="token comment">// 活动状态</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> beginTime<span class="token punctuation">;</span>       <span class="token comment">// 开始时间</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> endTime<span class="token punctuation">;</span>         <span class="token comment">// 结束时间</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>环境上下文类定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Context</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractState</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">State</span> state<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">ActivityInfo</span> activityInfo<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Context</span><span class="token punctuation">(</span><span class="token class-name">State</span> state<span class="token punctuation">,</span> <span class="token class-name">ActivityInfo</span> activityInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> state<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>activityInfo <span class="token operator">=</span> activityInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 获取当前状态
+     *
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">State</span> <span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 设置流转状态
+     *
+     * @param state 下一个状态
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setState</span><span class="token punctuation">(</span><span class="token class-name">State</span> state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 获取当前活动信息
+     *
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">ActivityInfo</span> <span class="token function">getActivityInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> activityInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 设置活动信息
+     *
+     * @param activityInfo
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setActivityInfo</span><span class="token punctuation">(</span><span class="token class-name">ActivityInfo</span> activityInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>activityInfo <span class="token operator">=</span> activityInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityReview</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span><span class="token function">activityReview</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">examinationPassed</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span><span class="token function">examinationPassed</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">reviewRejected</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span><span class="token function">reviewRejected</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">withdrawalOfTrial</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span><span class="token function">withdrawalOfTrial</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityClosed</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span><span class="token function">activityClosed</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityOn</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span><span class="token function">activityOn</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityExecution</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span><span class="token function">activityExecution</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>活动Service业务定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ActivityService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Enum</span><span class="token punctuation">&lt;</span><span class="token class-name">Status</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> statusMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcurrentHashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Enum</span><span class="token punctuation">&lt;</span><span class="token class-name">Status</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ActivityInfo</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">String</span> activityId<span class="token punctuation">,</span> <span class="token class-name">Enum</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Status</span><span class="token punctuation">&gt;</span></span> status<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 模拟查询活动信息</span>
+        <span class="token class-name">ActivityInfo</span> activityInfo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActivityInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setActivityId</span><span class="token punctuation">(</span>activityId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setActivityName</span><span class="token punctuation">(</span><span class="token string">&quot;618营销活动&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setBeginTime</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setEndTime</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        statusMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>activityId<span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> activityInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 查询活动信息
+     *
+     * @param activityId 活动ID
+     * @return 查询结果
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ActivityInfo</span> <span class="token function">queryActivityInfo</span><span class="token punctuation">(</span><span class="token class-name">String</span> activityId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 模拟查询活动信息</span>
+        <span class="token class-name">ActivityInfo</span> activityInfo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActivityInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setActivityId</span><span class="token punctuation">(</span>activityId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setActivityName</span><span class="token punctuation">(</span><span class="token string">&quot;618营销活动&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span>statusMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>activityId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setBeginTime</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        activityInfo<span class="token punctuation">.</span><span class="token function">setEndTime</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> activityInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 查询活动状态
+     *
+     * @param activityId 活动ID
+     * @return 查询结果
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Enum</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Status</span><span class="token punctuation">&gt;</span></span> <span class="token function">queryActivityStatus</span><span class="token punctuation">(</span><span class="token class-name">String</span> activityId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> statusMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>activityId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 执行状态变更
+     *
+     * @param activityId   活动ID
+     * @param beforeStatus 变更前状态
+     * @param afterStatus  变更后状态 b
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">execStatus</span><span class="token punctuation">(</span><span class="token class-name">String</span> activityId<span class="token punctuation">,</span> <span class="token class-name">Enum</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Status</span><span class="token punctuation">&gt;</span></span> beforeStatus<span class="token punctuation">,</span> <span class="token class-name">Enum</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Status</span><span class="token punctuation">&gt;</span></span> afterStatus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        statusMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>activityId<span class="token punctuation">,</span> afterStatus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>具体状态流程定义：CheckState，CloseState，DoingState，EditingState，OpenState，PassState，RefuseState</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">//待审核状态</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CheckState</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractState</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">examinationPassed</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">extractedExecStatus</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">getActivityInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Status<span class="token punctuation">.</span>Pass</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token string">&quot;0000&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;活动审核通过完成&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">reviewRejected</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">extractedExecStatus</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">getActivityInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Status<span class="token punctuation">.</span>Refuse</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token string">&quot;0000&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;活动审核撤销回到编辑中&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">withdrawalOfTrial</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">extractedExecStatus</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">getActivityInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Status<span class="token punctuation">.</span>Editing</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">withdrawalOfTrial</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">activityClosed</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">extractedExecStatus</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">getActivityInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Status<span class="token punctuation">.</span>Close</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token string">&quot;0000&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;活动审核关闭完成&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 执行活动状态流转状态
+     *
+     * @param activityInfo 活动信息
+     * @param status       状态
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">extractedExecStatus</span><span class="token punctuation">(</span><span class="token class-name">ActivityInfo</span> activityInfo<span class="token punctuation">,</span> <span class="token class-name">Status</span> status<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">ActivityService</span><span class="token punctuation">.</span><span class="token function">execStatus</span><span class="token punctuation">(</span>activityInfo<span class="token punctuation">.</span><span class="token function">getActivityId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> activityInfo<span class="token punctuation">.</span><span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>...其他状态参考代码案例！这里不在累赘！</strong></p> <p><strong>测试用例定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code> <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">stateTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> activityId <span class="token operator">=</span> <span class="token string">&quot;100001&quot;</span><span class="token punctuation">;</span>
+        <span class="token class-name">ActivityInfo</span> activityInfo <span class="token operator">=</span> <span class="token class-name">ActivityService</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>activityId<span class="token punctuation">,</span> <span class="token class-name">Status<span class="token punctuation">.</span>Editing</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Context</span> context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Context</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">EditingState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> activityInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Result</span> result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">activityReview</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;测试结果(编辑中To提审活动)：{}&quot;</span><span class="token punctuation">,</span> <span class="token class-name">JSONUtil</span><span class="token punctuation">.</span><span class="token function">toJsonStr</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;活动信息：{}&quot;</span><span class="token punctuation">,</span> <span class="token class-name">JSONUtil</span><span class="token punctuation">.</span><span class="token function">toJsonStr</span><span class="token punctuation">(</span><span class="token class-name">ActivityService</span><span class="token punctuation">.</span><span class="token function">queryActivityInfo</span><span class="token punctuation">(</span>activityId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        context<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PassState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">activityClosed</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;测试结果(提审活动To审核成功)：{}&quot;</span><span class="token punctuation">,</span> <span class="token class-name">JSONUtil</span><span class="token punctuation">.</span><span class="token function">toJsonStr</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;活动信息：{}&quot;</span><span class="token punctuation">,</span> <span class="token class-name">JSONUtil</span><span class="token punctuation">.</span><span class="token function">toJsonStr</span><span class="token punctuation">(</span><span class="token class-name">ActivityService</span><span class="token punctuation">.</span><span class="token function">queryActivityInfo</span><span class="token punctuation">(</span>activityId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        result <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">activityExecution</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;测试结果(审核成功To开启活动中)：{}&quot;</span><span class="token punctuation">,</span> <span class="token class-name">JSONUtil</span><span class="token punctuation">.</span><span class="token function">toJsonStr</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;活动信息：{}&quot;</span><span class="token punctuation">,</span> <span class="token class-name">JSONUtil</span><span class="token punctuation">.</span><span class="token function">toJsonStr</span><span class="token punctuation">(</span><span class="token class-name">ActivityService</span><span class="token punctuation">.</span><span class="token function">queryActivityInfo</span><span class="token punctuation">(</span>activityId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+</code></pre></div><p><strong>预期输出结果：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token number">15</span><span class="token operator">:</span><span class="token number">09</span><span class="token operator">:</span><span class="token number">24.403</span> <span class="token punctuation">[</span>main<span class="token punctuation">]</span> INFO <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>smartfrank<span class="token punctuation">.</span>pattern<span class="token punctuation">.</span></span>StateTest</span> <span class="token operator">-</span> 测试结果<span class="token punctuation">(</span>编辑中<span class="token class-name">To</span>提审活动<span class="token punctuation">)</span>：<span class="token punctuation">{</span><span class="token string">&quot;code&quot;</span><span class="token operator">:</span><span class="token string">&quot;0000&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;info&quot;</span><span class="token operator">:</span><span class="token string">&quot;活动提审成功&quot;</span><span class="token punctuation">}</span>
+<span class="token number">15</span><span class="token operator">:</span><span class="token number">09</span><span class="token operator">:</span><span class="token number">24.408</span> <span class="token punctuation">[</span>main<span class="token punctuation">]</span> INFO <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>smartfrank<span class="token punctuation">.</span>pattern<span class="token punctuation">.</span></span>StateTest</span> <span class="token operator">-</span> 活动信息：<span class="token punctuation">{</span><span class="token string">&quot;activityName&quot;</span><span class="token operator">:</span><span class="token string">&quot;618营销活动&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;activityId&quot;</span><span class="token operator">:</span><span class="token string">&quot;100001&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;beginTime&quot;</span><span class="token operator">:</span><span class="token number">1636528164406</span><span class="token punctuation">,</span><span class="token string">&quot;endTime&quot;</span><span class="token operator">:</span><span class="token number">1636528164406</span><span class="token punctuation">,</span><span class="token string">&quot;status&quot;</span><span class="token operator">:</span><span class="token string">&quot;Check&quot;</span><span class="token punctuation">}</span>
+<span class="token number">15</span><span class="token operator">:</span><span class="token number">09</span><span class="token operator">:</span><span class="token number">24.409</span> <span class="token punctuation">[</span>main<span class="token punctuation">]</span> INFO <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>smartfrank<span class="token punctuation">.</span>pattern<span class="token punctuation">.</span></span>StateTest</span> <span class="token operator">-</span> 测试结果<span class="token punctuation">(</span>提审活动<span class="token class-name">To</span>审核成功<span class="token punctuation">)</span>：<span class="token punctuation">{</span><span class="token string">&quot;code&quot;</span><span class="token operator">:</span><span class="token string">&quot;0000&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;info&quot;</span><span class="token operator">:</span><span class="token string">&quot;活动审核关闭完成&quot;</span><span class="token punctuation">}</span>
+<span class="token number">15</span><span class="token operator">:</span><span class="token number">09</span><span class="token operator">:</span><span class="token number">24.409</span> <span class="token punctuation">[</span>main<span class="token punctuation">]</span> INFO <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>smartfrank<span class="token punctuation">.</span>pattern<span class="token punctuation">.</span></span>StateTest</span> <span class="token operator">-</span> 活动信息：<span class="token punctuation">{</span><span class="token string">&quot;activityName&quot;</span><span class="token operator">:</span><span class="token string">&quot;618营销活动&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;activityId&quot;</span><span class="token operator">:</span><span class="token string">&quot;100001&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;beginTime&quot;</span><span class="token operator">:</span><span class="token number">1636528164409</span><span class="token punctuation">,</span><span class="token string">&quot;endTime&quot;</span><span class="token operator">:</span><span class="token number">1636528164409</span><span class="token punctuation">,</span><span class="token string">&quot;status&quot;</span><span class="token operator">:</span><span class="token string">&quot;Close&quot;</span><span class="token punctuation">}</span>
+<span class="token number">15</span><span class="token operator">:</span><span class="token number">09</span><span class="token operator">:</span><span class="token number">24.409</span> <span class="token punctuation">[</span>main<span class="token punctuation">]</span> INFO <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>smartfrank<span class="token punctuation">.</span>pattern<span class="token punctuation">.</span></span>StateTest</span> <span class="token operator">-</span> 测试结果<span class="token punctuation">(</span>审核成功<span class="token class-name">To</span>开启活动中<span class="token punctuation">)</span>：<span class="token punctuation">{</span><span class="token string">&quot;code&quot;</span><span class="token operator">:</span><span class="token string">&quot;0000&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;info&quot;</span><span class="token operator">:</span><span class="token string">&quot;活动变更活动中完成&quot;</span><span class="token punctuation">}</span>
+<span class="token number">15</span><span class="token operator">:</span><span class="token number">09</span><span class="token operator">:</span><span class="token number">24.409</span> <span class="token punctuation">[</span>main<span class="token punctuation">]</span> INFO <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>smartfrank<span class="token punctuation">.</span>pattern<span class="token punctuation">.</span></span>StateTest</span> <span class="token operator">-</span> 活动信息：<span class="token punctuation">{</span><span class="token string">&quot;activityName&quot;</span><span class="token operator">:</span><span class="token string">&quot;618营销活动&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;activityId&quot;</span><span class="token operator">:</span><span class="token string">&quot;100001&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;beginTime&quot;</span><span class="token operator">:</span><span class="token number">1636528164409</span><span class="token punctuation">,</span><span class="token string">&quot;endTime&quot;</span><span class="token operator">:</span><span class="token number">1636528164409</span><span class="token punctuation">,</span><span class="token string">&quot;status&quot;</span><span class="token operator">:</span><span class="token string">&quot;Doing&quot;</span><span class="token punctuation">}</span>
+</code></pre></div><h3 id="_2-4-状态模式优点"><a href="#_2-4-状态模式优点" class="header-anchor">#</a> 2.4 状态模式优点</h3> <blockquote><ul><li>结构清晰，状态模式将与特定状态相关的行为局部化到一个状态中，并且将不同状态的行为分割开来，满足“单一职责原则”。</li> <li>将状态转换显示化，减少对象间的相互依赖。将不同的状态引入独立的对象中会使得状态转换变得更加明确，且减少对象间的相互依赖。</li> <li>状态类职责明确，有利于程序的扩展。通过定义新的子类很容易地增加新的状态和转换。</li></ul></blockquote> <h3 id="_2-5-状态模式缺点"><a href="#_2-5-状态模式缺点" class="header-anchor">#</a> 2.5 状态模式缺点</h3> <blockquote><ul><li>状态模式的使用必然会增加系统的类与对象的个数。</li> <li>状态模式的结构与实现都较为复杂，如果使用不当会导致程序结构和代码的混乱。</li> <li>状态模式对开闭原则的支持并不太好，对于可以切换状态的状态模式，增加新的状态类需要修改那些负责状态转换的源码，否则无法切换到新增状态，而且修改某个状态类的行为也需要修改对应类的源码。</li></ul></blockquote> <h2 id="三、总结"><a href="#三、总结" class="header-anchor">#</a> 三、总结</h2> <blockquote><p>经过上面案例体现，我们可以发现状态模式让代码结构有很强的可读性，同事也满足开闭原则，同时状态模式将每个状态的行为封装到对应的一个类中。
+在当一个事件或者对象有很多种状态，状态之间会相互转换，对不同的状态要求不同行为的时候，可以考虑使用状态模式。</p></blockquote> <p><a href="https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-state" target="_blank" rel="noopener noreferrer">代码案例<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/blog/dp/behavior/smart-dp-observation.html" class="prev">
+            手撸设计模式之-观察者模式
+          </a></span> <span class="next"><a href="/blog/dp/behavior/smart-dp-strategy.html">
+            手撸设计模式之-策略模式
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-70334359></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.08362344.js" defer></script><script src="/assets/js/3.59ce7a4e.js" defer></script><script src="/assets/js/1.12fdb9e6.js" defer></script><script src="/assets/js/16.9ede1db5.js" defer></script>
+  </body>
+</html>

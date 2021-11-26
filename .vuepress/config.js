@@ -38,11 +38,11 @@ module.exports = {
           },
           {
             "text": "结构型模式",
-            "link": "/blog/dp/structure/"
+            "link": "/blog/dp/structure/smart-dp-adapter.md"
           },
           {
             "text": "行为型模式",
-            "link": "/blog/dp/behavior/"
+            "link": "/blog/dp/behavior/smart-dp-chain.md"
           }
         ]
       },
@@ -80,7 +80,7 @@ module.exports = {
         "items": [
           {
             "text": "K8s",
-            "link": "/blog/demo.md"
+            "link": "/blog/devops/k8s/aliyun-deploy-k8s.md"
           },
           {
             "text": "Jenkins",
@@ -100,11 +100,31 @@ module.exports = {
 
     //侧边栏
     "sidebar": {
-      '/blog/dp/': [
-        ['create/smart-dp-factory.md', '手撸设计模式之-工厂模式'],
-        ['create/smart-dp-singleton.md', '手撸设计模式之-单例模式'],
-        ['create/smart-dp-prototype.md', '手撸设计模式之-原型模式'],
-        ['create/smart-dp-builder.md', '手撸设计模式之-建造者模式']
+      '/blog/dp/create/': [
+        ['smart-dp-factory.md', '手撸设计模式之-工厂模式'],
+        ['smart-dp-singleton.md', '手撸设计模式之-单例模式'],
+        ['smart-dp-prototype.md', '手撸设计模式之-原型模式'],
+        ['smart-dp-builder.md', '手撸设计模式之-建造者模式']
+      ],
+      '/blog/dp/behavior/': [
+        ['smart-dp-chain.md', '手撸设计模式之-责任链模式'],
+        ['smart-dp-delegate.md', '手撸设计模式之-委派模式'],
+        ['smart-dp-observation.md', '手撸设计模式之-观察者模式'],
+        ['smart-dp-state.md', '手撸设计模式之-状态模式'],
+        ['smart-dp-strategy.md', '手撸设计模式之-策略模式'],
+        ['smart-dp-template.md', '手撸设计模式之-模板模式']
+      ],
+      '/blog/dp/structure/': [
+        ['smart-dp-adapter.md', '手撸设计模式之-适配器模式'],
+        ['smart-dp-bridging.md', '手撸设计模式之-桥接模式'],
+        ['smart-dp-combination.md', '手撸设计模式之-组合模式'],
+        ['smart-dp-decorate.md', '手撸设计模式之-装饰器模式'],
+        ['smart-dp-facade.md', '手撸设计模式之-外观模式'],
+        ['smart-dp-flyweight.md', '手撸设计模式之-享元模式'],
+        ['smart-dp-proxy.md', '手撸设计模式之-代理模式']
+      ],
+      '/blog/devops/k8s/': [
+        ['aliyun-deploy-k8s.md', '阿里云-ECS云服务器跨地域部署k8s集群']
       ]
     },
 
@@ -131,6 +151,6 @@ module.exports = {
     "startYear": "2021"
   },
   "markdown": {
-    "lineNumbers": true
+    "lineNumbers": false
   }
 }

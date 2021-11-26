@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>手撸设计模式-适配器模式 | 从码农到工匠</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="生命不息，奋斗不止！">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.e842a6eb.css" as="style"><link rel="preload" href="/assets/js/app.08362344.js" as="script"><link rel="preload" href="/assets/js/3.59ce7a4e.js" as="script"><link rel="preload" href="/assets/js/1.12fdb9e6.js" as="script"><link rel="preload" href="/assets/js/23.2fa16af1.js" as="script"><link rel="prefetch" href="/assets/js/10.87864daf.js"><link rel="prefetch" href="/assets/js/11.26c0089a.js"><link rel="prefetch" href="/assets/js/12.5a0c4c03.js"><link rel="prefetch" href="/assets/js/13.b0079f83.js"><link rel="prefetch" href="/assets/js/14.ae625c25.js"><link rel="prefetch" href="/assets/js/15.52c3934d.js"><link rel="prefetch" href="/assets/js/16.9ede1db5.js"><link rel="prefetch" href="/assets/js/17.893ba03d.js"><link rel="prefetch" href="/assets/js/18.59f5efb4.js"><link rel="prefetch" href="/assets/js/19.0055271d.js"><link rel="prefetch" href="/assets/js/20.1ef59e6d.js"><link rel="prefetch" href="/assets/js/21.11b6f8f6.js"><link rel="prefetch" href="/assets/js/22.70115544.js"><link rel="prefetch" href="/assets/js/24.cf4f3e35.js"><link rel="prefetch" href="/assets/js/25.9c0576cc.js"><link rel="prefetch" href="/assets/js/26.ebb97ce5.js"><link rel="prefetch" href="/assets/js/27.6397af58.js"><link rel="prefetch" href="/assets/js/28.eb62542a.js"><link rel="prefetch" href="/assets/js/29.facde5f5.js"><link rel="prefetch" href="/assets/js/4.25a6ee14.js"><link rel="prefetch" href="/assets/js/5.1562d149.js"><link rel="prefetch" href="/assets/js/6.f44b99c6.js"><link rel="prefetch" href="/assets/js/7.61521e3f.js"><link rel="prefetch" href="/assets/js/8.7100921f.js"><link rel="prefetch" href="/assets/js/9.4cb499c8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e842a6eb.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1156296a data-v-1156296a><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>从码农到工匠</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>生命不息，奋斗不止！</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>EasyJava</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">从码农到工匠</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  Home
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      设计模式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/dp/create/smart-dp-factory.html" class="nav-link"><i class="undefined"></i>
+  创建型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/structure/smart-dp-adapter.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  结构型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/behavior/smart-dp-chain.html" class="nav-link"><i class="undefined"></i>
+  行为型模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Spring全家桶
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java面试
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  系统架构
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  中间件
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Devops
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/devops/k8s/aliyun-deploy-k8s.html" class="nav-link"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/Jacklinsir" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    EasyJava
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>18</h3> <h6 data-v-828910c6>Articles</h6></div> <div data-v-828910c6><h3 data-v-828910c6>18</h3> <h6 data-v-828910c6>Tags</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="undefined"></i>
+  Home
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      设计模式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/dp/create/smart-dp-factory.html" class="nav-link"><i class="undefined"></i>
+  创建型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/structure/smart-dp-adapter.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  结构型模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/dp/behavior/smart-dp-chain.html" class="nav-link"><i class="undefined"></i>
+  行为型模式
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Spring全家桶
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  SpringCloud
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Java面试
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  系统架构
+</a></div><div class="nav-item"><a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  中间件
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Devops
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/devops/k8s/aliyun-deploy-k8s.html" class="nav-link"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/blog/demo.html" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/Jacklinsir" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/blog/dp/structure/smart-dp-adapter.html" aria-current="page" class="active sidebar-link">手撸设计模式之-适配器模式</a></li><li><a href="/blog/dp/structure/smart-dp-bridging.html" class="sidebar-link">手撸设计模式之-桥接模式</a></li><li><a href="/blog/dp/structure/smart-dp-combination.html" class="sidebar-link">手撸设计模式之-组合模式</a></li><li><a href="/blog/dp/structure/smart-dp-decorate.html" class="sidebar-link">手撸设计模式之-装饰器模式</a></li><li><a href="/blog/dp/structure/smart-dp-facade.html" class="sidebar-link">手撸设计模式之-外观模式</a></li><li><a href="/blog/dp/structure/smart-dp-flyweight.html" class="sidebar-link">手撸设计模式之-享元模式</a></li><li><a href="/blog/dp/structure/smart-dp-proxy.html" class="sidebar-link">手撸设计模式之-代理模式</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>手撸设计模式-适配器模式</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>EasyJava</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div data-v-1156296a><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">手撸设计模式-适配器模式</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>EasyJava</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>11/26/2021</span></i> <!----> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>适配器模式</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="一-、适配器模式介绍"><a href="#一-、适配器模式介绍" class="header-anchor">#</a> 一 、适配器模式介绍</h2> <h3 id="_1-1-定义"><a href="#_1-1-定义" class="header-anchor">#</a> 1.1 定义</h3> <blockquote><p>我喜欢的样子你都有 !
+你喜欢的样子我有没有 !
+没有的话，我送你个适配器，好吗 !</p></blockquote> <blockquote><p>将一个类的接口转换成客户希望的另外一个接口。适配器模式使得原本由于接口不兼容而不能在一起工作的那些类可以一起工作。——《设计模式：可复用面向对象软件的基础》</p></blockquote> <h3 id="_1-2-生活场景"><a href="#_1-2-生活场景" class="header-anchor">#</a> 1.2 生活场景</h3> <p><img src="https://img-blog.csdnimg.cn/de0ba721052343e68f672b64569c37b3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5oqA5pyv5o-P6L-w5Lq655Sf,size_17,color_FFFFFF,t_70,g_se,x_16" alt="适配器模式插图"></p> <blockquote><p>适配器模式主要的作用就是将原来不兼容的接口，通过适配修改做到统一，使得用户方便使用，就像多年前的日常经常使用到的<strong>万能充，数据线，MAC笔记本转换头，出国买个插座</strong>等等案例。</p></blockquote> <p><strong>除了我们生活中出现的各种适配的场景，那么在业务开发中呢？</strong></p> <blockquote><p>在业务开发中我们会经常的需要做不同接口的兼容，尤其是中台服务，中台需要把各个业务线的各种类型服务做统一包装，再对外提供接口进行使用。而这在我们平常的开发中也是非常常见的。</p></blockquote> <h3 id="_1-3-角色"><a href="#_1-3-角色" class="header-anchor">#</a> 1.3 角色</h3> <blockquote><ul><li>目标角色（target）：这是客户锁期待的接口。目标可以是具体的或抽象的类，也可以是接口</li> <li>适配者角色（adaptee）：已有接口，但是和客户器期待的接口不兼容。</li> <li>适配器角色（adapter）：将已有接口转换成目标接口。</li></ul></blockquote> <h3 id="_1-4-适配器模式uml结构图"><a href="#_1-4-适配器模式uml结构图" class="header-anchor">#</a> 1.4 适配器模式UML结构图</h3> <p><img src="https://img-blog.csdnimg.cn/ad9067a99d284925a60b74cfa8bd0c4e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5oqA5pyv5o-P6L-w5Lq655Sf,size_19,color_FFFFFF,t_70,g_se,x_16" alt="适配器模式UML结构图"></p> <blockquote><p>如上图，因为java没有类多继承，所以只能实现Target接口，而且Target只能是接口。Adapter实现了Target接口，继承了Adaptee类，Target.operation()实现为Adaptee.specificOperation()。</p></blockquote> <h3 id="_1-5-代码案例"><a href="#_1-5-代码案例" class="header-anchor">#</a> 1.5 代码案例</h3> <p><strong>目标抽象接口定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Description: 目标抽象接口
+ * &lt;br/&gt;
+ * Target
+ * @author laiql
+ * @date 2021/10/25 18:54
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Target</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * Adaptee没有的功能
+     */</span>
+    <span class="token keyword">void</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>源类定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Description: 源类
+ * &lt;br/&gt;
+ * Adaptee
+ *
+ * @author laiql
+ * @date 2021/10/25 19:08
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Adaptee</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">specificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;Adaptee.specificRequest&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>适配类定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Description: 创建适配类
+ * &lt;br/&gt;
+ * Adapter
+ * 适配器Adapter继承自Adaptee，同时又实现了目标(Target)接口。
+ *
+ * @author laiql
+ * @date 2021/10/25 19:08
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Adapter</span> <span class="token keyword">extends</span> <span class="token class-name">Adaptee</span> <span class="token keyword">implements</span> <span class="token class-name">Target</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * 目标接口要求调用Request()这个方法名，但源类Adaptee没有方法Request()
+     * 因此适配器补充上这个方法名
+     * 但实际上Request()只是调用源类Adaptee的SpecificRequest()方法的内容
+     * 所以适配器只是将SpecificRequest()方法作了一层封装，封装成Target可以调用的Request()而已
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">specificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//实现自己的业务逻辑</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>测试用例定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AdapterPatternDemo</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Target</span> target <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Adapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        target<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>预期结果输出：</p> <div class="language-properties extra-class"><pre class="language-properties"><code><span class="token attr-name">Connected</span> <span class="token attr-value">to the target VM, address: '127.0.0.1:51756', transport: 'socket'</span>
+Adaptee.specificRequest
+<span class="token attr-name">Disconnected</span> <span class="token attr-value">from the target VM, address: '127.0.0.1:51756', transport: 'socket'</span>
+</code></pre></div><h2 id="二-适配模式模式应用场景"><a href="#二-适配模式模式应用场景" class="header-anchor">#</a> 二，适配模式模式应用场景</h2> <h3 id="_2-1-场景介绍"><a href="#_2-1-场景介绍" class="header-anchor">#</a> 2.1 场景介绍</h3> <blockquote><p>在日常生活中，我们需要讲标准的220V的电压转成110V电压来适配各种电器，比如笔记本电脑，手机等等，所以我们需要开发一套电压适配程序，我们采用适配器模式，适配器模式符合软件开闭原则！
+系统需要复用现有类，而该类的接口不符合系统的需求，可以使用适配器模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作
+多个组件功能类似，但接口不统一且可能会经常切换时，可使用适配器模式，使得客户端可以以统一的接口使用它们</p></blockquote> <p>2.2 对象的适配器模式与类的适配器模式对比</p> <blockquote><p>对象的适配器模式与类的适配器模式相同，对象的适配器模式也是把适配的类的API转换成为目标类的API。
+与类的适配器模式不同的是，对象的适配器模式不是使用继承关系连接到Adaptee类，而是使用委派关系连接到Adaptee类。</p></blockquote> <h3 id="_2-3-代码实践"><a href="#_2-3-代码实践" class="header-anchor">#</a> 2.3 代码实践</h3> <p><strong>目标电压接口定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Description: 目标电压接口
+ * &lt;br/&gt;
+ * TargetVoltage
+ *
+ * @author laiql
+ * @date 2021/10/25 19:13
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">TargetVoltage</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * 将220v转换成110v（原有插头（Adaptee）没有的）
+     */</span>
+    <span class="token class-name">Integer</span> <span class="token function">convert</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>源标准电压类定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Description: 原电压220V
+ * &lt;br/&gt;
+ * SourceVoltage
+ *
+ * @author laiql
+ * @date 2021/10/25 19:17
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SourceVoltage</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Integer</span> voltage <span class="token operator">=</span> <span class="token number">220</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 输出电压
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">outVoltage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> voltage<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>电压适配器类定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Description: 适配电压
+ * &lt;br/&gt;
+ * AdapterVoltage
+ *
+ * @author laiql
+ * @date 2021/10/25 19:19
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AdapterVoltage</span> <span class="token keyword">implements</span> <span class="token class-name">TargetVoltage</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Integer</span> adapterVoltage <span class="token operator">=</span> <span class="token number">110</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 关联适配的类
+     */</span>
+    <span class="token keyword">private</span> <span class="token class-name">SourceVoltage</span> sourceVoltage<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">AdapterVoltage</span><span class="token punctuation">(</span><span class="token class-name">SourceVoltage</span> sourceVoltage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sourceVoltage <span class="token operator">=</span> sourceVoltage<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">convert</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//源电压</span>
+        <span class="token class-name">Integer</span> source <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sourceVoltage<span class="token punctuation">.</span><span class="token function">outVoltage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//目标电压</span>
+        <span class="token class-name">Integer</span> target <span class="token operator">=</span> source <span class="token operator">-</span> adapterVoltage<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>测试用例定义：</strong></p> <div class="language-java extra-class"><pre class="language-java"><code>  <span class="token class-name">TargetVoltage</span> targetVoltage <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AdapterVoltage</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SourceVoltage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;输出电压：&quot;</span> <span class="token operator">+</span> targetVoltage<span class="token punctuation">.</span><span class="token function">convert</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;V&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p><strong>预期输出结果：</strong></p> <div class="language-properties extra-class"><pre class="language-properties"><code>输出电压：110V
+<span class="token attr-name">Disconnected</span> <span class="token attr-value">from the target VM, address: '127.0.0.1:53024', transport: 'socket'</span>
+</code></pre></div><h2 id="三、优缺点"><a href="#三、优缺点" class="header-anchor">#</a> 三、优缺点</h2> <h3 id="_3-1-适配器模式"><a href="#_3-1-适配器模式" class="header-anchor">#</a> 3.1 适配器模式</h3> <p><strong>优点：</strong></p> <blockquote><p>更好的复用性，系统需要使用现有的类，而此类的接口不符合系统的需要。那么通过适配器模式就可以让这些功能得到更好的复用。
+透明、简单，客户端可以调用同一接口，因而对客户端来说是透明的。这样做更简单 、 更直接。
+更好的扩展性、在实现适配器功能的时候，可以调用自己开发的功能，从而自然地扩展系统的功能。
+解耦性，将目标类和适配者类解耦，通过引入一个适配器类重用现有的适配者类，而无需修改原有代码。
+符合开放-关闭原则，同一个适配器可以把适配者类和它的子类都适配到目标接口；可以为不同的目标接口实现不同的适配器，而不需要修改待适配类。</p></blockquote> <p><strong>缺点：</strong></p> <blockquote><p>过多的使用适配器，会让系统非常零乱，不易整体进行把握</p></blockquote> <h2 id="三、总结"><a href="#三、总结" class="header-anchor">#</a> 三、总结</h2> <blockquote><p>上文可以看到不使用适配器模式这些功能同样可以实现，但是使用了适配器模式就可以让代码：干净整洁易于维护、减少大量重复的判断和使用、让代码更加易于维护和拓展。</p></blockquote> <p><a href="https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-adapter" target="_blank" rel="noopener noreferrer">代码地址<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/blog/dp/structure/smart-dp-bridging.html">
+            手撸设计模式之-桥接模式
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-70334359></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.08362344.js" defer></script><script src="/assets/js/3.59ce7a4e.js" defer></script><script src="/assets/js/1.12fdb9e6.js" defer></script><script src="/assets/js/23.2fa16af1.js" defer></script>
+  </body>
+</html>
