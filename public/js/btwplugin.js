@@ -6,9 +6,9 @@ window.onload = function () {
     btw = new BTWPlugin();
     btw.init({
         id: 'container',
-        blogId: '28394-1637911381724-766',
+        blogId: '28394-1638155123642-717',
         name: 'EasyJava',
-        qrcode: 'https://www.easyjava.cn/images/weixin.jpg',
+        qrcode: 'https://www.easyjava.cn/weixin.png',
         keyword: '验证码',
     });
 };
