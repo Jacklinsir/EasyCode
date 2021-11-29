@@ -440,3 +440,4 @@ public class CheckState extends AbstractState {
 > 在当一个事件或者对象有很多种状态，状态之间会相互转换，对不同的状态要求不同行为的时候，可以考虑使用状态模式。
 
 [代码案例](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-state)
+<HideArticle/>

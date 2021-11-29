@@ -238,3 +238,4 @@ Disconnected from the target VM, address: '127.0.0.1:51292', transport: 'socket'
 > + 装饰器实现的重点是对抽象类继承接口方式的使用，同时设定被继承的接口可以通过构造函数传递其实现类，由此增加扩展性并重写方法里可以实现此部分父类实现的功能。
 
 [代码地址](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-decorate)
+<HideArticle/>

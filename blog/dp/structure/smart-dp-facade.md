@@ -249,3 +249,4 @@ Process finished with exit code 0
 >+ 很多时候不是设计模式没有用，而是自己编程开发经验不足导致即使学了设计模式也很难驾驭。毕竟这些知识都是经过一些实际操作提炼出来的精华。
 
 [代码地址](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-facade)
+<HideArticle/>

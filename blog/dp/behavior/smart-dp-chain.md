@@ -477,3 +477,4 @@ public class Activity618AuthHandler implements Ratify {
 > 责任链模式很好的处理单一职责和开闭原则，简单了耦合也使对象关系更加清晰，而且外部的调用方并不需要关心责任链是如何进行处理的*(以上程序中可以把责任链的组合进行包装，在提供给外部使用)*。但除了这些优点外也需要是适当的场景才进行使用，避免造成性能以及编排混乱调试测试疏漏问题。
 
 [代码地址](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-chain)
+<HideArticle/>

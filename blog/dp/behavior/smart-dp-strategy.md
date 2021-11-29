@@ -248,4 +248,5 @@ Disconnected from the target VM, address: '127.0.0.1:50867', transport: 'socket'
 >+ 通过策略设计模式的使用可以把我们方法中的if语句优化掉，大量的if语句使用会让代码难以扩展，也不好维护，同时在后期遇到各种问题也很难维护。在使用这样的设计模式后可以很好的满足隔离性与和扩展性，对于不断新增的需求也非常方便拓展。
 
 [代码案例](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-strategy)
+<HideArticle/>
 

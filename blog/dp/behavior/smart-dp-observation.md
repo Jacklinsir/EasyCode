@@ -314,3 +314,4 @@ public class LotteryServiceImpl extends LotteryService {
 > 此种设计模式从结构上是满足开闭原则的，当你需要新增其他的监听事件或者修改监听逻辑，是不需要改动事件处理类的。但是可能你不能控制调用顺序以及需要做一些事件结果的返回继续操作，所以使用的过程时需要考虑场景的合理性。
 
 [代码案例](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-observation)
+<HideArticle/>

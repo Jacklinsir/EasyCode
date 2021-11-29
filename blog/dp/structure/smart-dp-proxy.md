@@ -331,3 +331,4 @@ Disconnected from the target VM, address: '127.0.0.1:60233', transport: 'socket'
 > + 代理模式的设计方式可以让代码更加整洁、干净易于维护，虽然在这部分开发中额外增加了很多类也包括了自己处理bean的注册等，但是这样的中间件复用性极高也更加智能，可以非常方便的扩展到各个服务应用中。
 
 [案例代码地址](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-proxy)
+<HideArticle/>

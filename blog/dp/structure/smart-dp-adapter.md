@@ -207,3 +207,4 @@ Disconnected from the target VM, address: '127.0.0.1:53024', transport: 'socket'
 > 上文可以看到不使用适配器模式这些功能同样可以实现，但是使用了适配器模式就可以让代码：干净整洁易于维护、减少大量重复的判断和使用、让代码更加易于维护和拓展。
 
 [代码地址](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-adapter)
+<HideArticle/>

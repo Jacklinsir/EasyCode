@@ -504,3 +504,4 @@ public class ThreadLocalSingleton {
 
 # 总结
 >单例模式在我们日常开发也是频繁常见，单例模式可以保证内存里只有一个实例，减少了内存开销；可以避免对资源的多重占用。
+<HideArticle/>

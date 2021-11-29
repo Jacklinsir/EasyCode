@@ -327,3 +327,4 @@ bmUgMTEgKEEyMjIzKSAxMjhHQiDpu5HoibIg56e75Yqo6IGU6YCa55S15L+hNEfmiYvmnLog5Y+M
 > + 另外模版模式也是为了解决子类通用方法，放到父类中设计的优化。让每一个子类只做子类需要完成的内容，而不需要关心其他逻辑。这样提取公用代码，行为由父类管理，扩展可变部分，也就非常有利于开发拓展和迭代。
 
 [代码案例](https://gitee.com/unicornlai/smart-design-pattern/tree/master/smart-dp-template)
+<HideArticle/>
